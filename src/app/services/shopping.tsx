@@ -1,29 +1,29 @@
 import Product from '../models/product';
 
-export function getShoppingList(): Array<Product>  {
+export function getShoppingList() :Product[] {
     return [
         {
-            id: '1',
+            id: '0',
             name:'Epazote',
             isGrabbed: true
         },
         {
-            id: '2',
+            id: '1',
             name:'Tomates',
             isGrabbed: false
         },
         {
-            id: '3',
+            id: '2',
             name:'Totopos',
             isGrabbed: true
         },
         {
-            id: '4',
+            id: '3',
             name:'Bolillo',
             isGrabbed: false
         },
         {
-            id: '5',
+            id: '4',
             name:'Yogurt',
             isGrabbed: true
         }

@@ -1,9 +1,12 @@
 export default function Button({onClick, children}: {onClick: any, children:any}) {
     return (
-        <button onClick={e => {
-            e.stopPropagation();
-            onClick();
-        }}>
+        <button 
+            className='pointer-events-auto rounded-md bg-blue-600 px-3 py-2 text-[0.8125rem] font-semibold leading-5 text-white hover:bg-blue-500'
+            onClick={e => {
+                e.stopPropagation();
+                onClick();
+            }}
+        >
             {children}
         </button>
     );

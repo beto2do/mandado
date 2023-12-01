@@ -8,7 +8,7 @@ export default function SuperMarketProduct(product: Product) {
 
     return (
         <>
-            <input 
+            <input
                 type='checkbox' 
                 id={checkboxId} 
                 checked={checked}
