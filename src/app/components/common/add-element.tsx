@@ -1,17 +1,18 @@
 "use client"
 import { useState } from 'react';
 import Button from '../common/button';
+import Input from '../common/input';
 
 export default function AddElement({onAdd}:{onAdd: any}) {
     const [text, setText] = useState('');
     return (
     <div className="flex gap-1">
-        <input
-            className='block w-full py-1.5 px-3 text-base font-normal leading-6 border-solid border border-zinc-300 rounded' 
+        <Input
             placeholder="Add Element"
             value={text}
-            onChange={e => setText(e.target.value)}
-        />
+            onChange={(e: any) => setText(e.target.value)}
+        >
+        </Input>
         <Button
             onClick={() => {
                 setText('');
