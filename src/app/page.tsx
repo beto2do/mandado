@@ -1,22 +1,10 @@
 import Link from 'next/link'
-import Tile from './models/tile'
+import Tile from '../models/tile'
+import { getTiles } from '../services/dashboard'
 
 export default function Home() {
 
-  const tiles: Tile[] = [
-    {
-      name: 'Shop Grocery',
-      url: '/shop'
-    },
-    {
-      name: 'See meals',
-      url: '/meal'
-    },
-    {
-      name: 'Look at your pantry',
-      url: '/pantry'
-    },
-  ];
+  const tiles: Tile[] = getTiles();
 
   const markupTiles = tiles.map((tile: Tile) => {
     return (
