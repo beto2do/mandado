@@ -1,20 +1,21 @@
 "use client"
 import { useState } from 'react';
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import Input from '../common/input';
 
 export default function AddElement({onAdd}:{onAdd: any}) {
     const [text, setText] = useState('');
     return (
     <div className="flex gap-1">
-        <Input
-            placeholder="Add Element"
+        <TextField
+            label="Add Element"
             value={text}
             onChange={(e: any) => setText(e.target.value)}
-        >
-        </Input>
+        />
         <Button
-            className='pointer-events-auto rounded-md bg-red-600 px-3 py-2 text-[0.8125rem] font-semibold leading-5 text-white hover:bg-red-500'
+            className='pointer-events-auto bg-red-600 text-white hover:bg-red-500 hover:border-0 border-0'
+            variant="contained"
             onClick={() => {
                 setText('');
                 onAdd(text);
