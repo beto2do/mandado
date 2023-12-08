@@ -1,6 +1,6 @@
 "use client"
 import {  createContext, useContext, useReducer, Dispatch } from 'react';
-import { getShoppingList } from '../app/services/shopping';
+import { getShoppingList } from '../services/shopping';
 import Product from '../models/product';
 
 const ShoppingContext = createContext<Product[]>([]);
