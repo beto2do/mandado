@@ -1,5 +1,5 @@
 'use client';
-import Product from '../../app/models/product';
+import Product from '../../models/product';
 import { useState } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import RadioButtonUnchecked from '@mui/icons-material/RadioButtonUnchecked';

@@ -1,6 +1,6 @@
 import ListItem from '@mui/material/ListItem';
 import AddElement from '../../components/common/add-element';
-import Product from '../../app/models/product';
+import Product from '../../models/product';
 import SuperMarketProduct from '../../components/shopping/product';
 import ListWrapper from '../common/list-wrapper';
 import { useShopping, useShoppingDispatch } from '../../contexts/shopping-context';
