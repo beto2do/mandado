@@ -10,10 +10,8 @@ export default function Home() {
     return <DashboardTile tile={tile}></DashboardTile>;
   });
   return (
-    <main>
       <div className="flex gap-4">
         {markupTiles}
       </div>
-    </main>
   )
 }
