@@ -1,9 +1,9 @@
 import ListItem from '@mui/material/ListItem';
 import AddElement from '../../components/common/add-element';
-import Product from '../../models/product';
+import Product from '../../app/models/product';
 import SuperMarketProduct from '../../components/shopping/product';
 import ListWrapper from '../common/list-wrapper';
-import { useShopping, useShoppingDispatch } from '../../contexts/shopping-context';
+import { useShopping, useShoppingDispatch } from '../../app/contexts/shopping-context';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 
