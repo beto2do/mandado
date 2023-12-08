@@ -1,4 +1,7 @@
 export default interface Tile {
-    name: string,
-    url: string
+    title: string,
+    content: string,
+    action: string,
+    imgUrl: string,
+    actionUrl: string
 }
