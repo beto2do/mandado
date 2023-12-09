@@ -12,6 +12,8 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import StoreFront from '@mui/icons-material/Storefront';
+import Link from 'next/link';
+import { useSelectedLayoutSegment } from 'next/navigation';
 
 const pages = [
     {
@@ -32,11 +34,8 @@ const pages = [
     }
 ];
 
-export default function GlobalNavBar({
-    children
-}: {
-    children: React.ReactNode
-}) {
+export default function GlobalNavBar() {
+    const segment = useSelectedLayoutSegment();
     const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -144,13 +143,10 @@ export default function GlobalNavBar({
                             </Button>
                         ))}
                     </Box>
-  
+                    {segment !== 'login' ? <Link href="/login">Login</Link> : null}
                 </Toolbar>
             </Container>
         </AppBar>
-        <main className='mx-12 my-5'>
-            {children}
-        </main>
     </>
     );
 }

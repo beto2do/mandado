@@ -7,7 +7,7 @@ export default function Home() {
   const tiles: Tile[] = getTiles();
 
   const markupTiles = tiles.map((tile: Tile) => {
-    return <DashboardTile tile={tile}></DashboardTile>;
+    return <DashboardTile key={tile.title} tile={tile}></DashboardTile>;
   });
   return (
       <div className="flex gap-4">
