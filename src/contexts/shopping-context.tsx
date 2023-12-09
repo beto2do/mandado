@@ -1,6 +1,5 @@
 "use client"
 import {  createContext, useContext, useReducer, Dispatch } from 'react';
-import { getShoppingList } from '../services/shopping';
 import Product from '../models/product';
 
 const ShoppingContext = createContext<Product[]>([]);
@@ -37,10 +36,15 @@ function shoppingReducer(groceries: Product[], action: any) : Product[] {
                 }
             ];
         }
+        case 'onload': {
+            return [
+                ...action.products
+            ]
+        }
         default : {
             throw Error('Unknown action: ', action.type);
         }
     }
 }
 
-const initialGroceries :Product[] =  getShoppingList();
+const initialGroceries :Product[] = [];

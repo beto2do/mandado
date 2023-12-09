@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import ListItem from '@mui/material/ListItem';
 import AddElement from '../../components/common/add-element';
 import Product from '../../models/product';
@@ -6,10 +7,21 @@ import ListWrapper from '../common/list-wrapper';
 import { useShopping, useShoppingDispatch } from '../../contexts/shopping-context';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { getShoppingList } from '../../services/shopping';
 
 export default function ShoppingList() {
     const groceryList :Product[] =  useShopping();
     const dispatch = useShoppingDispatch();
+
+    useEffect(()=> {
+        getShoppingList().then(products => {
+            dispatch({
+                type: 'onload',
+                products: products
+            });
+        });
+    },[]);
+
     const groceryGroup = groceryList.map(product => {
       return (
         <ListItem 
