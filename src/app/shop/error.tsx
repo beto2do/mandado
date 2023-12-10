@@ -1,6 +1,6 @@
 'use client'
-import ErrorDetail from '../../models/error-detail'
-import GeneralError from '../../components/common/general-error'
+import ErrorDetail from '@/models/error-detail'
+import GeneralError from '@/components/common/general-error'
  
 export default function Error({
   error,

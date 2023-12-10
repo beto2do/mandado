@@ -1,4 +1,4 @@
-import Tile from '../models/tile'
+import Tile from '@/models/tile'
 
 export function getTiles(): Tile[] {
     const tiles: Tile[] = [

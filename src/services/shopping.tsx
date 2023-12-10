@@ -1,4 +1,4 @@
-import Product from '../models/product';
+import Product from '@/models/product';
 
 export async function getShoppingList() : Promise<Product[]> {
     const products = await fetch('/api/shop')

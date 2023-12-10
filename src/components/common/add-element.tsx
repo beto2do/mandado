@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Input from '../common/input';
 
 export default function AddElement({onAdd}:{onAdd: any}) {
     const [text, setText] = useState('');

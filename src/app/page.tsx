@@ -1,6 +1,6 @@
-import Tile from '../models/tile';
-import { getTiles } from '../services/dashboard';
-import DashboardTile from '../components/common/dashboard-tile'
+import Tile from '@/models/tile';
+import { getTiles } from '@/services/dashboard';
+import DashboardTile from '@/components/common/dashboard-tile'
 
 export default function Home() {
 
