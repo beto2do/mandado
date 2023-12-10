@@ -3,7 +3,6 @@ import ListItem from '@mui/material/ListItem';
 import AddElement from '../../components/common/add-element';
 import Product from '../../models/product';
 import SuperMarketProduct from '../../components/shopping/product';
-import ListWrapper from '../common/list-wrapper';
 import { useShopping, useShoppingDispatch } from '../../contexts/shopping-context';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -14,12 +13,19 @@ export default function ShoppingList() {
     const dispatch = useShoppingDispatch();
 
     useEffect(()=> {
-        getShoppingList().then(products => {
-            dispatch({
-                type: 'onload',
-                products: products
+        let ignore = false;
+
+        if(!ignore) {
+            getShoppingList().then(products => {
+                dispatch({
+                    type: 'onload',
+                    products: products
+                });
             });
-        });
+        }
+        return () => {
+            ignore = true
+        }
     },[]);
 
     const groceryGroup = groceryList.map(product => {
@@ -55,9 +61,7 @@ export default function ShoppingList() {
                     });
                 }}
             ></AddElement>
-            <ListWrapper>
                 {groceryGroup}
-            </ListWrapper>
         </>
     );
 }

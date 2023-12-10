@@ -17,7 +17,9 @@ export default function RootLayout(
     <html lang="en">
       <body className={inter.className}>
         <GlobalNavBar/>
-        {children}
+        <main className='m-6'>
+          {children}
+        </main>
         {modal}
       </body>
     </html>
