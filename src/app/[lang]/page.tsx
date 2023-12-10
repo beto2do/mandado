@@ -1,10 +1,15 @@
 import Tile from '@/models/tile';
-import { getTiles } from '@/services/dashboard';
 import DashboardTile from '@/components/common/dashboard-tile'
+import { getDictionary } from '../../../get-dictionary'
+import { Locale } from '../../../i18n-config'
 
-export default function Home() {
-
-  const tiles: Tile[] = getTiles();
+export default async function IndexPage({
+  params: { lang },
+}: {
+  params: { lang: Locale }
+}) {
+  const dictionary = await getDictionary(lang)
+  const tiles: Tile[] = dictionary.dashboard.tiles;
 
   const markupTiles = tiles.map((tile: Tile) => {
     return <DashboardTile key={tile.title} tile={tile}></DashboardTile>;

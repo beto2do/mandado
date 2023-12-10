@@ -1,0 +1,47 @@
+{
+    "dashboard": {
+        "tiles": [
+            {
+              "title": "Shop your Grocery",
+              "content": "Track your grocery list when your at the super market.",
+              "action": "Ver lista de super",
+              "imgUrl": "/eggs.jpg",
+              "actionUrl": "/shop"
+            },
+            {
+              "title": "Comidas",
+              "content": "Hecha un vistazo a la comida que quieras hoy cocinar.",
+              "action": "Comienza eligiendo",
+              "imgUrl": "/eggs.jpg",
+              "actionUrl": "/meal"
+            },
+            {
+              "title": "Mi cocina",
+              "content": "Mi cocina esta vacia? checa tu alacena.",
+              "action": "Ver mis comestibles",
+              "imgUrl": "/eggs.jpg",
+              "actionUrl": "/pantry"
+            }
+        ]
+    },
+    "navBar": {
+        "links":  [
+            {
+                "label":"Shopping", 
+                "path":"/shop"
+            },
+            {
+                "label":"Meals",
+                "path":"/meal"
+            },
+            {
+                "label":"Pantry", 
+                "path":"/pantry"
+            },
+            {
+                "label":"Recipes", 
+                "path":"/recipe"
+            }
+        ]
+    }
+}

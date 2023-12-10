@@ -1,0 +1,47 @@
+{
+    "dashboard": {
+        "tiles": [
+            {
+              "title": "Comprar comestibles",
+              "content": "Revisa la lista de comestibles cuando estas en el super mercado",
+              "action": "Go super market",
+              "imgUrl": "/eggs.jpg",
+              "actionUrl": "/shop"
+            },
+            {
+              "title": "See meals",
+              "content": "Take a look what you want to cook today.",
+              "action": "Let's cook",
+              "imgUrl": "/eggs.jpg",
+              "actionUrl": "/meal"
+            },
+            {
+              "title": "Kitken",
+              "content": "Is your kitken empty? double check what you have in your pantry.",
+              "action": "Look at your pantry",
+              "imgUrl": "/eggs.jpg",
+              "actionUrl": "/pantry"
+            }
+        ]
+    },
+    "navBar": {
+        "links":  [
+            {
+                "label":"Shopping", 
+                "path":"/shop"
+            },
+            {
+                "label":"Meals",
+                "path":"/meal"
+            },
+            {
+                "label":"Pantry", 
+                "path":"/pantry"
+            },
+            {
+                "label":"Recipes", 
+                "path":"/recipe"
+            }
+        ]
+    }
+}

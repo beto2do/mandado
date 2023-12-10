@@ -2,6 +2,11 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import GlobalNavBar from '@/components/common/global-nav-bar'
+import { i18n } from '../../../i18n-config'
+
+export async function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ lang: locale }))
+}
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -10,11 +15,18 @@ export const metadata: Metadata = {
   description: 'App to track grocery',
 }
 
-export default function RootLayout(
-  {children, modal}: { children: React.ReactNode, modal: React.ReactNode }
+export default function RootLayout({
+  children,
+  modal,
+  params
+}: { 
+  children: React.ReactNode, 
+  modal: React.ReactNode,
+  params: { lang: string }
+}
 ) {
   return (
-    <html lang="en">
+    <html lang={params ? params.lang : 'en'}>
       <body className={inter.className}>
         <GlobalNavBar/>
         <main className='m-6'>
