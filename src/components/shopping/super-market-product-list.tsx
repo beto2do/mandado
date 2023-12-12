@@ -6,6 +6,7 @@ import SuperMarketProduct from '@/components/shopping/product';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useShopping, useShoppingDispatch } from '@/contexts/shopping-context';
+import SkeletonList from '@/components/common/skeleton-list';
 
 export default function SuperMarketProductList() {
     const groceryList :Product[] =  useShopping();
@@ -48,5 +49,6 @@ export default function SuperMarketProductList() {
           </ListItem>
           );
       });
-    return (groceryGroup);
+
+    return (groceryList.length > 0 ? groceryGroup : <SkeletonList/>);
 }
