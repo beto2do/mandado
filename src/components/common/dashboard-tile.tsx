@@ -3,7 +3,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import Link from 'next/link';
+import { CardActionArea, CardActions } from '@mui/material';
 
 export default function DashboardTile({tile}: {tile:Tile}){
     return(
@@ -25,9 +26,9 @@ export default function DashboardTile({tile}: {tile:Tile}){
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary" href={tile.actionUrl}>
+          <Link  href={tile.actionUrl}>
             {tile.action}
-          </Button>
+          </Link>
         </CardActions>
       </Card>
     );

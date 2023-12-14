@@ -9,7 +9,6 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import StoreFront from '@mui/icons-material/Storefront';
 import Link from 'next/link';
@@ -55,8 +54,6 @@ export default function GlobalNavBar() {
                     <Typography
                         variant="h6"
                         noWrap
-                        component="a"
-                        href="/"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
@@ -67,7 +64,7 @@ export default function GlobalNavBar() {
                             textDecoration: 'none',
                         }}
                     >
-                    Man-dado
+                        <Link href="/" >Man-dado</Link>
                     </Typography>
   
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -101,13 +98,12 @@ export default function GlobalNavBar() {
                         >
                             {pages.map((page) => (
                                 <MenuItem key={page.label} onClick={handleCloseNavMenu}>
-                                    <Typography 
-                                        textAlign="center"
-                                        component="a"
+                                    <Link 
+                                        className='text-center'
                                         href={page.path}
                                     >
-                                            {page.label}
-                                    </Typography>
+                                        {page.label}
+                                    </Link>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -133,14 +129,14 @@ export default function GlobalNavBar() {
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
-                            <Button
+                            <Link
+                            className='block text-white my-4 px-2 py-1.5'
                             key={page.label}
                             onClick={handleCloseNavMenu}
                             href={page.path}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
                             >
                             {page.label}
-                            </Button>
+                            </Link>
                         ))}
                     </Box>
                     {segment !== 'login' ? <Link href="/login">Login</Link> : null}
