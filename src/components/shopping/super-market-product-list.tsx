@@ -5,6 +5,7 @@ import ListItem from '@mui/material/ListItem';
 import SuperMarketProduct from '@/components/shopping/product';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import { useShopping, useShoppingDispatch } from '@/contexts/shopping-context';
 import SkeletonList from '@/components/common/skeleton-list';
 
@@ -33,9 +34,14 @@ export default function SuperMarketProductList() {
           <ListItem 
               key={'list_element' + product.id}
               secondaryAction={
-                  <IconButton edge="end" aria-label="comments">
-                    <DeleteIcon />
-                  </IconButton>
+                <>
+                    <IconButton edge="end" aria-label="comments">
+                        <EditIcon />
+                    </IconButton>
+                    <IconButton edge="end" aria-label="comments">
+                        <DeleteIcon />
+                    </IconButton>
+                </>
                 }
               disablePadding
           >
