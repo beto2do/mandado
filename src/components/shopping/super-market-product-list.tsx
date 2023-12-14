@@ -6,22 +6,25 @@ import SuperMarketProduct from '@/components/shopping/product';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { useShopping, useShoppingDispatch } from '@/contexts/shopping-context';
+import {
+    shoppingSlice,
+    useSelector,
+    useDispatch,
+    selectProducts
+  } 
+from '@/lib/redux';
 import SkeletonList from '@/components/common/skeleton-list';
 
 export default function SuperMarketProductList() {
-    const groceryList :Product[] =  useShopping();
-    const dispatch = useShoppingDispatch();
+    const groceryList :Product[] =  useSelector(selectProducts);
+    const dispatch = useDispatch();
 
     useEffect(()=> {
         let ignore = false;
 
         if(!ignore) {
             getShoppingList().then(products => {
-                dispatch({
-                    type: 'onload',
-                    products: products
-                });
+                dispatch(shoppingSlice.actions.upload(products));
             });
         }
         return () => {

@@ -3,3 +3,7 @@ export default interface Product {
     name: string,
     isGrabbed: boolean
 }
+
+export interface ShoppingSliceState {
+    products: Product[]
+}

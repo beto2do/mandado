@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { Providers } from '@/lib/providers'
 import './globals.css'
 import GlobalNavBar from '@/components/common/global-nav-bar'
 import { i18n } from '../../../i18n-config'
@@ -26,6 +27,7 @@ export default function RootLayout({
 }
 ) {
   return (
+    <Providers>
     <html lang={params ? params.lang : 'en'}>
       <body className={inter.className}>
         <GlobalNavBar/>
@@ -35,5 +37,6 @@ export default function RootLayout({
         {modal}
       </body>
     </html>
+    </Providers>
   )
 }
