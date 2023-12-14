@@ -1,11 +1,6 @@
-import { useEffect } from 'react'
 import ErrorDetail from '@/models/error-detail'
 
 export default function GeneralError({error, reset}: ErrorDetail) {
-
-    useEffect(() => {
-        console.error(error)
-      }, [error])
 
     return (
         <div>
