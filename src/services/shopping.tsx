@@ -1,5 +1,5 @@
 'use server'
-import Product, { ProductStatus } from '@/models/product';
+import { Product, ProductStatus } from '@/models/product';
 
 export async function getShoppingList() : Promise<Product[]> {
     const products =  await new Promise<Product[]>(( resolve, reject)  => {

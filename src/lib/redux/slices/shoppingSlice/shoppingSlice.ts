@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import Product, {ShoppingSliceState} from '@/models/product'
-import { stat } from 'fs';
+import { Product, ShoppingSliceState } from '@/models/product'
 
 const initialState: ShoppingSliceState = {
     products: []

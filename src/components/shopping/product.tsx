@@ -1,5 +1,5 @@
 'use client';
-import Product, { ProductStatus } from '../../models/product';
+import { Product, ProductStatus, KeyboardKeys } from '@/models';
 import Checkbox from '@mui/material/Checkbox';
 import RadioButtonUnchecked from '@mui/icons-material/RadioButtonUnchecked';
 import CheckCircle from '@mui/icons-material/CheckCircle';
@@ -12,7 +12,7 @@ import {
     useDispatch,
   } 
 from '@/lib/redux';
-import { ChangeEvent, KeyboardEventHandler } from 'react';
+import { ChangeEvent } from 'react';
 
 export default function SuperMarketProduct({product}: {product: Product}) {
     const dispatch = useDispatch();
@@ -35,7 +35,7 @@ export default function SuperMarketProduct({product}: {product: Product}) {
     };
 
     const pressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if(e.type === 'keydown' && e.key === 'Enter') {
+        if(e.type === 'keydown' && e.key === KeyboardKeys.ENTER) {
             dispatch(shoppingSlice.actions.changeStatus({...product,status:ProductStatus.VIEW }));
         }
     }

@@ -1,5 +1,5 @@
 import AddElement from '@/components/common/add-element';
-import Product from '@/models/product';
+import {Product, ProductStatus} from '@/models';
 import SuperMarketProductList from './super-market-product-list';
 import {
     shoppingSlice,
@@ -22,7 +22,8 @@ export default function ShoppingList() {
                         {
                             id: `${groceryList.length}`,
                             name: productName,
-                            isGrabbed: false
+                            isGrabbed: false,
+                            status: ProductStatus.VIEW,
                         }
                     ));
                 }}

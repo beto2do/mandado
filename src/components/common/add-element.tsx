@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { KeyboardKeys } from '@/models';
 
 export default function AddElement({onAdd}:{onAdd: any}) {
     const [text, setText] = useState('');
@@ -18,7 +19,7 @@ export default function AddElement({onAdd}:{onAdd: any}) {
     }
 
     const pressEnter = (e: any) => {
-        if(e.type === 'keydown' && e.key === 'Enter') {
+        if(e.type === 'keydown' && e.key === KeyboardKeys.ENTER) {
             addElement();
         }
     }

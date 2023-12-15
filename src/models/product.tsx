@@ -1,4 +1,4 @@
-export default interface Product {
+export interface Product {
     id: string,
     name: string,
     status: ProductStatus,
@@ -12,4 +12,4 @@ export interface ShoppingSliceState {
 export enum ProductStatus {
     EDITION = "EDITION",
     VIEW = "VIEW",
-  }
+}
