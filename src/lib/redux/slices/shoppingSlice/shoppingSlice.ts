@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import Product, {ShoppingSliceState} from '@/models/product'
+import { stat } from 'fs';
 
 const initialState: ShoppingSliceState = {
     products: []
@@ -20,6 +21,12 @@ export const shoppingSlice = createSlice({
         if(product) {
             product.isGrabbed = action.payload.isGrabbed;
         }
+    },
+    delete: (state, action: PayloadAction<Product>) => {
+        let productIndex = state.products.findIndex(product => action.payload.id === product.id);
+        if (productIndex > -1) {
+            state.products.splice(productIndex, 1);
+          }
     },
   }
 })
