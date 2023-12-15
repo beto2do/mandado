@@ -1,4 +1,4 @@
-export default interface Tile {
+export interface Tile {
     title: string,
     content: string,
     action: string,

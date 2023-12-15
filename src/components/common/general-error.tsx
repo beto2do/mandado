@@ -1,4 +1,4 @@
-import ErrorDetail from '@/models/error-detail'
+import { ErrorDetail } from '@/models'
 
 export default function GeneralError({error, reset}: ErrorDetail) {
 

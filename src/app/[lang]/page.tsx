@@ -1,4 +1,4 @@
-import Tile from '@/models/tile';
+import { Tile } from '@/models';
 import DashboardTile from '@/components/common/dashboard-tile'
 import { getDictionary } from '../../../get-dictionary'
 import { Locale } from '../../../i18n-config'

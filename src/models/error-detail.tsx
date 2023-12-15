@@ -1,4 +1,4 @@
-export default interface ErrorDetail {
+export interface ErrorDetail {
     error: Error & { digest?: string }
     reset: () => void
 }
