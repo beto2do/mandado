@@ -1,9 +1,15 @@
 export default interface Product {
     id: string,
     name: string,
-    isGrabbed: boolean
+    status: ProductStatus,
+    isGrabbed: boolean,
 }
 
 export interface ShoppingSliceState {
     products: Product[]
 }
+
+export enum ProductStatus {
+    EDITION = "EDITION",
+    VIEW = "VIEW",
+  }

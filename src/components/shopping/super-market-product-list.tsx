@@ -1,7 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 import { getShoppingList } from '@/services/shopping';
-import Product from '@/models/product';
+import Product, {ProductStatus} from '@/models/product';
 import ListItem from '@mui/material/ListItem';
 import SuperMarketProduct from '@/components/shopping/product';
 import IconButton from '@mui/material/IconButton';
@@ -39,10 +39,17 @@ export default function SuperMarketProductList() {
               key={'list_element' + product.id}
               secondaryAction={
                 <>
-                    <IconButton edge="end" aria-label="comments">
+                    <IconButton 
+                        edge="end" 
+                        aria-label="comments" 
+                        onClick={()=> dispatch(shoppingSlice.actions.changeStatus({...product,status:ProductStatus.EDITION })) }>
                         <EditIcon />
                     </IconButton>
-                    <IconButton edge="end" aria-label="comments" onClick={()=> dispatch(shoppingSlice.actions.delete(product)) }>
+                    <IconButton 
+                    edge="end" 
+                    aria-label="comments" 
+                    disabled={product.status === ProductStatus.EDITION}
+                    onClick={()=> dispatch(shoppingSlice.actions.delete(product)) }>
                         <DeleteIcon/>
                     </IconButton>
                 </>

@@ -22,6 +22,12 @@ export const shoppingSlice = createSlice({
             product.isGrabbed = action.payload.isGrabbed;
         }
     },
+    changeStatus: (state, action: PayloadAction<Product>) => {
+      let product = state.products.find(product => action.payload.id === product.id);
+      if(product) {
+          product.status = action.payload.status;
+      }
+  },
     delete: (state, action: PayloadAction<Product>) => {
         let productIndex = state.products.findIndex(product => action.payload.id === product.id);
         if (productIndex > -1) {
