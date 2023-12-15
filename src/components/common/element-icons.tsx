@@ -3,29 +3,41 @@ import Product, { ProductStatus } from '../../models/product';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import AddCirculeIcon from '@mui/icons-material/AddCircle';
 
 export function ElementIcons({
     product, 
     onEditEvent, 
-    onDeleteEvent
+    onDeleteEvent,
+    onSaveEvent,
     }: {
         product: Product, 
         onEditEvent?: MouseEventHandler<Element> | undefined, 
-        onDeleteEvent?: MouseEventHandler<Element> | undefined
+        onDeleteEvent?: MouseEventHandler<Element> | undefined,
+        onSaveEvent?: MouseEventHandler<Element> | undefined,
     }) 
 {
+    const isEditionStatus = product.status === ProductStatus.EDITION;
+    const editionView = isEditionStatus ?  
+    <IconButton 
+        edge="end" 
+        aria-label="comments" 
+        onClick={onSaveEvent}>
+        <AddCirculeIcon />
+    </IconButton> :
+    <IconButton 
+        edge="end" 
+        aria-label="comments" 
+        onClick={onEditEvent}>
+        <EditIcon />
+    </IconButton>;
     return (
         <>
-            <IconButton 
-                edge="end" 
-                aria-label="comments" 
-                onClick={onEditEvent}>
-                <EditIcon />
-            </IconButton>
+            {editionView    }
             <IconButton 
             edge="end" 
             aria-label="comments" 
-            disabled={product.status === ProductStatus.EDITION}
+            disabled={isEditionStatus}
             onClick={onDeleteEvent}>
                 <DeleteIcon/>
             </IconButton>

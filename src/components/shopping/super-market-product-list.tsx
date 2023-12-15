@@ -33,7 +33,10 @@ export default function SuperMarketProductList() {
 
     const onDeleteEvent = (product: Product)=> dispatch(shoppingSlice.actions.delete(product));
     const onEditEvent = (product: Product)=> dispatch(shoppingSlice.actions.changeStatus({...product,status:ProductStatus.EDITION }));
-    
+    const onSaveEvent = (product: Product)=> {
+        dispatch(shoppingSlice.actions.changeStatus({...product,status:ProductStatus.VIEW }));
+    }
+
     const groceryGroup = groceryList.map(product => {
         return (
           <ListItem 
@@ -42,6 +45,7 @@ export default function SuperMarketProductList() {
                 <ElementIcons
                     product={product}
                     onDeleteEvent={() => onDeleteEvent(product) }
+                    onSaveEvent={() => onSaveEvent(product)}
                     onEditEvent={() => onEditEvent(product) }/>
                 }
               disablePadding

@@ -27,7 +27,13 @@ export const shoppingSlice = createSlice({
       if(product) {
           product.status = action.payload.status;
       }
-  },
+    },
+    changeName: (state, action: PayloadAction<Product>) => {
+      let product = state.products.find(product => action.payload.id === product.id);
+      if(product) {
+          product.name = action.payload.name;
+      }
+    },
     delete: (state, action: PayloadAction<Product>) => {
         let productIndex = state.products.findIndex(product => action.payload.id === product.id);
         if (productIndex > -1) {
@@ -37,6 +43,11 @@ export const shoppingSlice = createSlice({
   }
 })
 
-export const { add, upload, updateIsGrabbed } = shoppingSlice.actions
+export const { 
+  add, 
+  upload, 
+  updateIsGrabbed, 
+  changeName,
+} = shoppingSlice.actions
 
 export default shoppingSlice.reducer

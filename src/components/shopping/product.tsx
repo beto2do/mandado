@@ -12,6 +12,7 @@ import {
     useDispatch,
   } 
 from '@/lib/redux';
+import { ChangeEvent, KeyboardEventHandler } from 'react';
 
 export default function SuperMarketProduct({product}: {product: Product}) {
     const dispatch = useDispatch();
@@ -22,12 +23,25 @@ export default function SuperMarketProduct({product}: {product: Product}) {
         if(product.status === ProductStatus.EDITION) {
             return;
         }
-        
+
         dispatch(shoppingSlice.actions.updateIsGrabbed({...product, isGrabbed: !product.isGrabbed}))
     }   
 
+    const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
+        const newName = event.target.value;
+        if(newName !== '') {
+            dispatch(shoppingSlice.actions.changeName({...product, name: newName}));
+        }
+    };
+
+    const pressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if(e.type === 'keydown' && e.key === 'Enter') {
+            dispatch(shoppingSlice.actions.changeStatus({...product,status:ProductStatus.VIEW }));
+        }
+    }
+
     const nameView =  product.status === ProductStatus.EDITION ? 
-                        <Input defaultValue={product.name} /> : 
+                        <Input defaultValue={product.name} onChange={onChangeInput} onKeyDown={pressEnter} autoFocus/> : 
                         <ListItemText id={checkboxId} primary={product.name} />;
 
     return (
