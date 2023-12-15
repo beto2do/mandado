@@ -1,3 +1,4 @@
+'use client';
 import { useEffect } from 'react';
 import { getShoppingList } from '@/services/shopping';
 import Product from '@/models/product';
@@ -50,9 +51,7 @@ export default function SuperMarketProductList() {
           >
               <SuperMarketProduct 
                   key={'super_market_product' + product.id}
-                  id={product.id} 
-                  name={product.name} 
-                  isGrabbed={product.isGrabbed}
+                  product={product}
               >
               </SuperMarketProduct>
           </ListItem>
