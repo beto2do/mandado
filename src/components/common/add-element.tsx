@@ -34,7 +34,7 @@ export default function AddElement({onAdd}:{onAdd: any}) {
             onKeyDown={pressEnter}
         />
         <Button
-            className='pointer-events-auto bg-red-600 text-white hover:bg-red-500 hover:border-0 border-0'
+            className='pointer-events-auto bg-red-600 text-white hover:bg-red-500 hover:border-0 border-0 h-14'
             variant="contained"
             onClick={addElement}
         >Add</Button>

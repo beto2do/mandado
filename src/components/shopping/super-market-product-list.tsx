@@ -42,8 +42,8 @@ export default function SuperMarketProductList() {
                     <IconButton edge="end" aria-label="comments">
                         <EditIcon />
                     </IconButton>
-                    <IconButton edge="end" aria-label="comments">
-                        <DeleteIcon onClick={()=> dispatch(shoppingSlice.actions.delete(product)) }/>
+                    <IconButton edge="end" aria-label="comments" onClick={()=> dispatch(shoppingSlice.actions.delete(product)) }>
+                        <DeleteIcon/>
                     </IconButton>
                 </>
                 }
