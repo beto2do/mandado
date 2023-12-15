@@ -4,9 +4,6 @@ import { getShoppingList } from '@/services/shopping';
 import Product, {ProductStatus} from '@/models/product';
 import ListItem from '@mui/material/ListItem';
 import SuperMarketProduct from '@/components/shopping/product';
-import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import {
     shoppingSlice,
     useSelector,
@@ -15,6 +12,7 @@ import {
   } 
 from '@/lib/redux';
 import SkeletonList from '@/components/common/skeleton-list';
+import { ElementIcons } from '@/components/common';
 
 export default function SuperMarketProductList() {
     const groceryList :Product[] =  useSelector(selectProducts);
@@ -33,26 +31,18 @@ export default function SuperMarketProductList() {
         }
     },[]);
 
+    const onDeleteEvent = (product: Product)=> dispatch(shoppingSlice.actions.delete(product));
+    const onEditEvent = (product: Product)=> dispatch(shoppingSlice.actions.changeStatus({...product,status:ProductStatus.EDITION }));
+    
     const groceryGroup = groceryList.map(product => {
         return (
           <ListItem 
               key={'list_element' + product.id}
               secondaryAction={
-                <>
-                    <IconButton 
-                        edge="end" 
-                        aria-label="comments" 
-                        onClick={()=> dispatch(shoppingSlice.actions.changeStatus({...product,status:ProductStatus.EDITION })) }>
-                        <EditIcon />
-                    </IconButton>
-                    <IconButton 
-                    edge="end" 
-                    aria-label="comments" 
-                    disabled={product.status === ProductStatus.EDITION}
-                    onClick={()=> dispatch(shoppingSlice.actions.delete(product)) }>
-                        <DeleteIcon/>
-                    </IconButton>
-                </>
+                <ElementIcons
+                    product={product}
+                    onDeleteEvent={() => onDeleteEvent(product) }
+                    onEditEvent={() => onEditEvent(product) }/>
                 }
               disablePadding
           >
