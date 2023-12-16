@@ -1,6 +1,6 @@
 'use client';
 import { useEffect } from 'react';
-import { getShoppingList } from '@/services/shopping';
+import { getShoppingList } from '@/services';
 import { Product, ProductStatus } from '@/models';
 import ListItem from '@mui/material/ListItem';
 import SuperMarketProduct from '@/components/shopping/product';
