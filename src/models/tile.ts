@@ -5,3 +5,10 @@ export interface Tile {
     imgUrl: string,
     actionUrl: string
 }
+
+export enum TileImages {
+    GROCERY = 'grocery.jpg',
+    SANDWICH = 'sandwich.jpg',
+    CHICKEN = 'chicken.jpg',
+    STRAWBERRY = 'strawberry.jpg',
+}

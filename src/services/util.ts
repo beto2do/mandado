@@ -1,4 +1,17 @@
+'use server'
+import { TileImages } from '@/models'
+
+//get image when the name is dynamic
 export async function getImage(imageName: string) {
-    //TODO catch error to show image placeholder
-    return await import(`../../public/${imageName}`);
+
+    switch (imageName) {
+        case TileImages.GROCERY:
+          return await import(`../../public/${TileImages.GROCERY}`);
+        case TileImages.SANDWICH:
+        return await import(`../../public/${TileImages.SANDWICH}`);
+        case TileImages.CHICKEN:
+            return await import(`../../public/${TileImages.CHICKEN}`);
+        default:
+            return await import(`../../public/${TileImages.STRAWBERRY}`);
+      }
 }
