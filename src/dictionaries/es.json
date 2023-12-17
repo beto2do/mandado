@@ -4,22 +4,22 @@
             {
               "title": "Comprar comestibles",
               "content": "Revisa la lista de comestibles cuando estas en el super mercado",
-              "action": "Go super market",
-              "imgUrl": "/eggs.jpg",
+              "action": "Ver lista de super",
+              "imgUrl": "grocery.jpg",
               "actionUrl": "/shop"
             },
             {
-              "title": "See meals",
-              "content": "Take a look what you want to cook today.",
-              "action": "Let's cook",
-              "imgUrl": "/eggs.jpg",
+              "title": "Comidas",
+              "content": "Hecha un vistazo a la comida que quieras hoy cocinar.",
+              "action": "Comienza eligiendo",
+              "imgUrl": "sandwich.jpg",
               "actionUrl": "/meal"
             },
             {
-              "title": "Kitken",
-              "content": "Is your kitken empty? double check what you have in your pantry.",
-              "action": "Look at your pantry",
-              "imgUrl": "/eggs.jpg",
+              "title": "Mi cocina",
+              "content": "Mi cocina esta vacia? checa tu alacena.",
+              "action": "Ver mis comestibles",
+              "imgUrl": "chicken.jpg",
               "actionUrl": "/pantry"
             }
         ]
@@ -27,19 +27,19 @@
     "navBar": {
         "links":  [
             {
-                "label":"Shopping", 
+                "label":"Super Mercado", 
                 "path":"/shop"
             },
             {
-                "label":"Meals",
+                "label":"Comidas",
                 "path":"/meal"
             },
             {
-                "label":"Pantry", 
+                "label":"Alacena", 
                 "path":"/pantry"
             },
             {
-                "label":"Recipes", 
+                "label":"Recetas", 
                 "path":"/recipe"
             }
         ]

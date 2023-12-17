@@ -5,15 +5,15 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { CardActionArea, CardActions } from '@mui/material';
+import { getImage } from '@/services'
+import Image from 'next/image'
 
-export default function DashboardTile({tile}: {tile:Tile}){
+export default async function DashboardTile({tile}: {tile:Tile}) {
     return(
         <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
-          <CardMedia
-            component="img"
-            height="140"
-            image={tile.imgUrl}
+          <Image
+            src={await getImage(tile.imgUrl)}
             alt=""
           />
           <CardContent>
