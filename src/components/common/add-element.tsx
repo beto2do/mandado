@@ -27,8 +27,9 @@ export function AddElement({
             onKeyDown={pressEnter}
         />
         <Button
-            className='pointer-events-auto bg-red-600 text-white hover:bg-red-500 hover:border-0 border-0 h-14'
+            className='pointer-events-auto bg-red-500 text-white hover:bg-red-400 hover:border-0 border-0 h-14'
             variant="contained"
+            sx={{backgroundColor:'#ef4444'}}
             onClick={addElement}
         >Add</Button>
     </div>

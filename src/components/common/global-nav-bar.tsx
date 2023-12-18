@@ -47,7 +47,7 @@ export function GlobalNavBar() {
 
     return (
     <>
-        <AppBar position="static">
+        <AppBar position="static" sx={{backgroundColor:'#ef4444'}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <StoreFront sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
