@@ -1,6 +1,6 @@
 "use client"
 import LoginForm from '@/components/login/login-form';
-import Modal from '@/components/common/modal';
+import { Modal } from '@/components/common';
 import Box from '@mui/material/Box';
 
 const style = {

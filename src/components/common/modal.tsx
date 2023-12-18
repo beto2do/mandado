@@ -2,7 +2,7 @@
 import { useCallback, useRef, useEffect, MouseEventHandler } from 'react'
 import { useRouter } from 'next/navigation'
 
-export default function Modal({ children }: { children: React.ReactNode }) {
+export function Modal({ children }: { children: React.ReactNode }) {
   const overlay = useRef(null)
   const wrapper = useRef(null)
   const router = useRouter()

@@ -1,6 +1,6 @@
 import { ErrorDetail } from '@/models'
 
-export default function GeneralError({error, reset}: ErrorDetail) {
+export function GeneralError({error, reset}: ErrorDetail) {
 
     return (
         <div>

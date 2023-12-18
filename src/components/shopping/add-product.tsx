@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react';
 import { KeyboardKeys } from '@/models';
-import AddElement from '@/components/common/add-element'
+import { AddElement } from '@/components/common'
 
 export default function AddProduct({onAdd}:{onAdd: any}) {
     const [text, setText] = useState('');

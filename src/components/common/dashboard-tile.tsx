@@ -7,7 +7,7 @@ import { CardActionArea, CardActions } from '@mui/material';
 import { getImage } from '@/services'
 import Image from 'next/image'
 
-export default async function DashboardTile({tile}: {tile:Tile}) {
+export async function DashboardTile({tile}: {tile:Tile}) {
     return(
         <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>

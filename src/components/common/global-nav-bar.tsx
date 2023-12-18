@@ -33,7 +33,7 @@ const pages = [
     }
 ];
 
-export default function GlobalNavBar() {
+export function GlobalNavBar() {
     const segment = useSelectedLayoutSegment();
     const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Providers } from '@/lib/providers'
 import './globals.css'
-import GlobalNavBar from '@/components/common/global-nav-bar'
+import { GlobalNavBar } from '@/components/common'
 import { i18n } from '../../../i18n-config'
 
 export async function generateStaticParams() {

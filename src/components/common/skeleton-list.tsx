@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography';
 import Skeleton from '@mui/material/Skeleton';
 
-export default function SkeletonList() {
+export function SkeletonList() {
     //TODO improve style in this skeleton
     const skeleton = [...Array(4)].map((value, index) => {
         return (

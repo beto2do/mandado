@@ -11,8 +11,7 @@ import {
     selectProducts
   } 
 from '@/lib/redux';
-import SkeletonList from '@/components/common/skeleton-list';
-import { ElementIcons } from '@/components/common';
+import { ElementIcons, SkeletonList } from '@/components/common';
 
 export default function SuperMarketProductList() {
     const groceryList :Product[] =  useSelector(selectProducts);

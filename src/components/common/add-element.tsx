@@ -2,7 +2,7 @@ import { ChangeEventHandler, KeyboardEventHandler, MouseEventHandler } from 'rea
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-export default function AddElement({
+export function AddElement({
     text, 
     isEmpty, 
     onChange, 
