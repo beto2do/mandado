@@ -1,28 +1,20 @@
-"use client"
-import { useState } from 'react';
+import { ChangeEventHandler, KeyboardEventHandler, MouseEventHandler } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { KeyboardKeys } from '@/models';
 
-export default function AddElement({onAdd}:{onAdd: any}) {
-    const [text, setText] = useState('');
-    const [isEmpty, setIsEmpty] = useState(false);
-
-    const addElement = () => {
-        if(text === '') {
-            setIsEmpty(true);
-        } else {
-            setIsEmpty(false);
-            setText('');
-            onAdd(text);
-        }
-    }
-
-    const pressEnter = (e: any) => {
-        if(e.type === 'keydown' && e.key === KeyboardKeys.ENTER) {
-            addElement();
-        }
-    }
+export default function AddElement({
+    text, 
+    isEmpty, 
+    onChange, 
+    pressEnter, 
+    addElement
+    }: {
+    text: string, 
+    isEmpty: boolean, 
+    onChange: ChangeEventHandler<HTMLInputElement>, 
+    pressEnter: KeyboardEventHandler<HTMLDivElement>, 
+    addElement: MouseEventHandler<HTMLButtonElement>
+    }) {
 
     return (
     <div className="flex gap-1">
@@ -31,7 +23,7 @@ export default function AddElement({onAdd}:{onAdd: any}) {
             label="Add Element"
             value={text}
             helperText={isEmpty ? 'Value is required' : '' }
-            onChange={(e: any) => setText(e.target.value)}
+            onChange={onChange}
             onKeyDown={pressEnter}
         />
         <Button

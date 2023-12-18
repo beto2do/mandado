@@ -1,4 +1,4 @@
-import AddElement from '@/components/common/add-element';
+import AddProduct from '@/components/shopping/add-product';
 import {Product, ProductStatus} from '@/models';
 import SuperMarketProductList from './super-market-product-list';
 import {
@@ -15,7 +15,7 @@ export default function ShoppingList() {
 
     return (
         <>
-            <AddElement 
+            <AddProduct 
                 onAdd={(productName: string) => {
                     //TODO change way to create the id
                     dispatch(shoppingSlice.actions.add(
@@ -27,7 +27,7 @@ export default function ShoppingList() {
                         }
                     ));
                 }}
-            ></AddElement>
+            ></AddProduct>
              <SuperMarketProductList></SuperMarketProductList>
         </>
     );
