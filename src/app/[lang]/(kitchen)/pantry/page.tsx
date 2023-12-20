@@ -1,3 +1,5 @@
+import { Pantry as PantryView } from '@/components/pantry';
+
 export default function Pantry() {
-    return <p>TODO - Make the pantry page</p>
+    return <PantryView></PantryView>;
 }
