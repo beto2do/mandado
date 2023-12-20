@@ -1,44 +1,124 @@
-import { Product } from '@/models'
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import Chip from '@mui/material/Chip';
+import { TableCellBaseProps } from '@mui/material/TableCell/TableCell'
+import { TableRows, TableCell, TableHeaders } from '@/models'
+import { TableView } from '@/components/common'
 
-export function PantryTable({products}: {products: Product[]}) {
+function createHeader(category: string): TableHeaders[] {
+    return [
+        {
+            label: category, 
+            align: undefined
+        },
+        {
+            label: 'Calories', 
+            align: 'right'
+        },
+        {
+            label: 'Fat', 
+            align: 'right'
+        },
+        {
+            label: 'Carbs', 
+            align: 'right'
+        },
+        {
+            label: 'Protein', 
+            align: 'right'
+        },
+    ];
+}
+
+function createDessertRows(): TableRows[] {
+    return [
+        createRow('1', [
+            createTableCell('Pie', undefined, 'th', 'row', 'out of stock'),
+            createTableCell('159', 'right', undefined, undefined, undefined),
+            createTableCell('6.0', 'right', undefined, undefined, undefined),
+            createTableCell('24', 'right', undefined, undefined, undefined),
+            createTableCell('4.0', 'right', undefined, undefined, undefined)
+        ]),
+        createRow('2', [
+            createTableCell('Ice cream sandwich', undefined, 'th', 'row', 'out of stock'),
+            createTableCell('237', 'right', undefined, undefined, undefined),
+            createTableCell('9.0', 'right', undefined, undefined, undefined),
+            createTableCell('37', 'right', undefined, undefined, undefined),
+            createTableCell('4.3', 'right', undefined, undefined, undefined)
+        ]),
+        createRow('3', [
+            createTableCell('Eclair', undefined, 'th', 'row', undefined),
+            createTableCell('237', 'right', undefined, undefined, undefined),
+            createTableCell('9.0', 'right', undefined, undefined, undefined),
+            createTableCell('37', 'right', undefined, undefined, undefined),
+            createTableCell('4.3', 'right', undefined, undefined, undefined)
+        ]),
+        createRow('4', [
+            createTableCell('Cupcake', undefined, 'th', 'row', undefined),
+            createTableCell('237', 'right', undefined, undefined, undefined),
+            createTableCell('9.0', 'right', undefined, undefined, undefined),
+            createTableCell('37', 'right', undefined, undefined, undefined),
+            createTableCell('4.3', 'right', undefined, undefined, undefined)
+        ]),
+        createRow('5', [
+            createTableCell('Gingerbread', undefined, 'th', 'row', 'out of stock'),
+            createTableCell('237', 'right', undefined, undefined, undefined),
+            createTableCell('9.0', 'right', undefined, undefined, undefined),
+            createTableCell('37', 'right', undefined, undefined, undefined),
+            createTableCell('4.3', 'right', undefined, undefined, undefined)
+        ])
+    ]
+}
+
+function createDairyRows(): TableRows[] {
+    return [
+        createRow('6', [
+            createTableCell('Milk', undefined, 'th', 'row', undefined),
+            createTableCell('237', 'right', undefined, undefined, undefined),
+            createTableCell('9.0', 'right', undefined, undefined, undefined),
+            createTableCell('37', 'right', undefined, undefined, undefined),
+            createTableCell('4.3', 'right', undefined, undefined, undefined)
+        ]),
+        createRow('7', [
+            createTableCell('Cheese', undefined, 'th', 'row', 'out of stock'),
+            createTableCell('237', 'right', undefined, undefined, undefined),
+            createTableCell('9.0', 'right', undefined, undefined, undefined),
+            createTableCell('37', 'right', undefined, undefined, undefined),
+            createTableCell('4.3', 'right', undefined, undefined, undefined)
+        ]),
+        createRow('8', [
+            createTableCell('Yogurt', undefined, 'th', 'row', undefined),
+            createTableCell('237', 'right', undefined, undefined, undefined),
+            createTableCell('9.0', 'right', undefined, undefined, undefined),
+            createTableCell('37', 'right', undefined, undefined, undefined),
+            createTableCell('4.3', 'right', undefined, undefined, undefined)
+        ])
+    ]
+}
+function createRow(id: string, columns: TableCell[]):TableRows {
+    return {id, columns};
+}
+
+function createTableCell(
+    label: string,
+    align?: 'inherit' | 'left' | 'center' | 'right' | 'justify',
+    component?: React.ElementType<React.ThHTMLAttributes<HTMLTableCellElement>>,
+    scope?:TableCellBaseProps['scope'],
+    chip?: string
+): TableCell {
+    return {
+        label:label, 
+        align: align, 
+        component: component, 
+        scope:scope,
+        chip: chip
+    };
+}
+
+//TODO move date to an API
+
+export function PantryTables() {
     return (
-        <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 500 }} aria-label="simple table" className='table-auto'>
-          <TableHead className='bg-slate-600'>
-            <TableRow>
-              <TableCell className='text-white'>Desserts</TableCell>
-              <TableCell className='text-white' align="right">Calories</TableCell>
-              <TableCell className='text-white' align="right">Fat&nbsp;(g)</TableCell>
-              <TableCell className='text-white' align="right">Carbs&nbsp;(g)</TableCell>
-              <TableCell className='text-white' align="right">Protein&nbsp;(g)</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {products.map((product) => (
-              <TableRow
-                key={product.name}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {product.name}
-                  <Chip label="Out of stock" className='bg-red-300 ml-1' />
-                </TableCell>
-                <TableCell align="right">{product.calories}</TableCell>
-                <TableCell align="right">{product.fat}</TableCell>
-                <TableCell align="right">{product.carbs}</TableCell>
-                <TableCell align="right">{product.protein}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+        <>
+            <TableView headers={createHeader('Dessert')} rows={createDessertRows()}></TableView>
+            <TableView headers={createHeader('Dairies')} rows={createDairyRows()}></TableView>
+        </>
     );
 }
