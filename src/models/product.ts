@@ -3,6 +3,11 @@ export interface Product {
     name: string,
     status: ProductStatus,
     isGrabbed: boolean,
+    category: string,
+    calories?: number,
+    fat?: number,
+    carbs?: number,
+    protein?: number
 }
 
 export interface ShoppingSliceState {
