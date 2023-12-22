@@ -1,6 +1,5 @@
 'use client';
 import { useEffect } from 'react';
-import { getShoppingList } from '@/services';
 import { Product, ProductStatus } from '@/models';
 import ListItem from '@mui/material/ListItem';
 import SuperMarketProduct from '@/components/shopping/product';
@@ -21,9 +20,11 @@ export default function SuperMarketProductList() {
         let ignore = false;
 
         if(!ignore) {
-            getShoppingList().then(products => {
+            fetch('/api/shop')
+            .then(response => response.json())
+            .then(products => {
                 dispatch(shoppingSlice.actions.upload(products));
-            });
+            })
         }
         return () => {
             ignore = true
@@ -39,7 +40,7 @@ export default function SuperMarketProductList() {
     const groceryGroup = groceryList.map(product => {
         return (
           <ListItem 
-              key={'list_element' + product.id}
+              key={'list_element' + product._id}
               secondaryAction={
                 <ElementIcons
                     product={product}
@@ -50,7 +51,7 @@ export default function SuperMarketProductList() {
               disablePadding
           >
               <SuperMarketProduct 
-                  key={'super_market_product' + product.id}
+                  key={'super_market_product' + product._id}
                   product={product}
               >
               </SuperMarketProduct>

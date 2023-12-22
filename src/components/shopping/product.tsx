@@ -16,7 +16,7 @@ import { ChangeEvent } from 'react';
 
 export default function SuperMarketProduct({product}: {product: Product}) {
     const dispatch = useDispatch();
-    const checkboxId = `super_market_product_checkbox${product.id}`;
+    const checkboxId = `super_market_product_checkbox${product._id}`;
 
     function handleToggle(e: any) {
         e.preventDefault();
