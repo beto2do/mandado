@@ -17,3 +17,9 @@ export interface TableCell {
     scope?:TableCellBaseProps['scope'],
     chip?: string
 }
+
+export interface PantryTable {
+    _id: string,
+    headers: TableHeaders[],
+    rows: TableRows[],
+}

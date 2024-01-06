@@ -7,7 +7,8 @@ export interface Product {
     calories?: number,
     fat?: number,
     carbs?: number,
-    protein?: number
+    protein?: number,
+    isOutOfStock: boolean
 }
 
 export interface ShoppingSliceState {
