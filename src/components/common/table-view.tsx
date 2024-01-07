@@ -14,26 +14,27 @@ export function TableView({headers, rows}:{
     rows: TableRows[]
     }) {
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} className="mb-2.5">
         <Table sx={{ minWidth: 500 }} aria-label="simple table" className='table-auto'>
           <TableHead className='bg-slate-600'>
-            <TableRow>
+            <TableRow >
                 {
-                    headers.map(header => (
-                        <TableCell className='text-white' align={header.align}>{header.label}</TableCell>
+                    headers.map((header,index) => (
+                        <TableCell key={`table-header-cell${index}`} className='text-white' align={header.align}>{header.label}</TableCell>
                     ))
                 }
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {rows.map((row, index) => (
               <TableRow
-                key={row.id}
+              key={`table-body-row${index}`}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 {
-                    row.columns.map(column => (
+                    row.columns.map((column, index) => (
                         <TableCell 
+                            key={`table-body-cell${index}`}
                             component={column.component}
                             scope={column.scope}
                             align={column.align}>
