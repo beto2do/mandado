@@ -10,13 +10,13 @@ export function PantryTables() {
     useEffect(()=> {
         let ignore = false;
 
-        if(!ignore) {
-            fetch('/api/pantry')
-            .then(response => response.json())
-            .then(pantriesData => {
+        fetch('/api/pantry')
+        .then(response => response.json())
+        .then(pantriesData => {
+            if(!ignore) {
                 setPantries(pantriesData);
+            }
             })
-        }
         return () => {
             ignore = true
         }
@@ -25,7 +25,7 @@ export function PantryTables() {
     return (
         <>
         {
-            pantries.map(table => <TableView headers={table.headers} rows={table.rows}></TableView>)
+            pantries.map(table => <TableView key={table._id} headers={table.headers} rows={table.rows}></TableView>)
         }
         </>
     );

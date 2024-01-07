@@ -1,6 +1,6 @@
 import { PantryTables } from '@/components/pantry'
 
-export function Pantry() {
+export function PantryView() {
     return (
         <>
             <PantryTables/>
