@@ -28,8 +28,8 @@ const pages = [
         path:'/pantry'
     },
     {
-        label:'Recipes', 
-        path:'/recipe'
+        label:'Products', 
+        path:'/product'
     }
 ];
 
