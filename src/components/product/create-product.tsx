@@ -31,7 +31,7 @@ export function CreateProduct() {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 >
-                    <ProductForm/>
+                    <ProductForm onSuccessful={handleClose}/>
             </CustomModal>
         </>
     )

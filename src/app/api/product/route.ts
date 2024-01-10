@@ -1,4 +1,4 @@
-import { findProducts } from '@/data/product.data'
+import { findProducts, createProduct } from '@/data/product.data'
 
 export async function GET() {
     const data = await findProducts();
@@ -8,5 +8,6 @@ export async function GET() {
 export async function POST(request: Request) {
     const res = await request.json()
     //TODO validate data
+    createProduct(res);
     return Response.json({ res })
 }

@@ -8,7 +8,7 @@ import { FormControlError, Product } from '@/models'
 import { FormEvent, ChangeEvent, useState } from 'react'
 import { createNewProduct } from '@/services'
 
-export function ProductForm() {
+export function ProductForm({onSuccessful}:{onSuccessful:any}) {
     const defaultError = {error: false, msg: ''};
     const nameMessage = 'Product Name is required';
     const categoryMessage = 'Category is required';
@@ -28,7 +28,9 @@ export function ProductForm() {
         event.preventDefault();
         if(validateProperties()) {
             createNewProduct(productProperties as Product).then((data) => {
-                console.log(data);
+                //TODO refresh products table
+                //TODO add banner to notify the user of successful creation
+                onSuccessful();
             });
         }
     }
