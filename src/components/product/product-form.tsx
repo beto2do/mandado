@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import { FormControlError, Product } from '@/models'
 import { FormEvent, ChangeEvent, useState } from 'react'
+import { createNewProduct } from '@/services'
 
 export function ProductForm() {
     const defaultError = {error: false, msg: ''};
@@ -15,7 +16,7 @@ export function ProductForm() {
     const fatMessage = 'Fat field is required';
     const carbsMessage = 'Carbs field is required';
     const proteinMessage = 'Protein field is required';
-    const [productProperties, setProductProperties] = useState({});
+    const [productProperties, setProductProperties] = useState({isOutOfStock:true});
     const [nameError, setNameError] = useState<FormControlError>(defaultError);
     const [categoryError, setCategoryError] = useState<FormControlError>(defaultError);
     const [caloriesError, setCaloriesError] = useState<FormControlError>(defaultError);
@@ -26,7 +27,9 @@ export function ProductForm() {
     function handleSubmit(event:FormEvent<HTMLFormElement>) {
         event.preventDefault();
         if(validateProperties()) {
-            alert('sending data ...')
+            createNewProduct(productProperties as Product).then((data) => {
+                console.log(data);
+            });
         }
     }
 
@@ -70,9 +73,9 @@ export function ProductForm() {
         return numErrors === 0;
     }
 
-    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, checked?: boolean) => {
         const name = event.target.name;
-        const value = event.target.value;
+        const value = name === 'isOutOfStock' ? checked : event.target.value;
         setProductProperties(properties => ({...properties, [name]: value}));
       }
 
