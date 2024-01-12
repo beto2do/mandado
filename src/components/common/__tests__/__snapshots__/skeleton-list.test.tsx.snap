@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+[
+  <div
+    className="MuiTypography-root MuiTypography-h2 css-1sra7t5-MuiTypography-root"
+  >
+    <span
+      className="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1e1x4vv-MuiSkeleton-root"
+      style={
+        {
+          "height": undefined,
+          "width": undefined,
+        }
+      }
+    />
+  </div>,
+  <div
+    className="MuiTypography-root MuiTypography-h2 css-1sra7t5-MuiTypography-root"
+  >
+    <span
+      className="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1e1x4vv-MuiSkeleton-root"
+      style={
+        {
+          "height": undefined,
+          "width": undefined,
+        }
+      }
+    />
+  </div>,
+  <div
+    className="MuiTypography-root MuiTypography-h2 css-1sra7t5-MuiTypography-root"
+  >
+    <span
+      className="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1e1x4vv-MuiSkeleton-root"
+      style={
+        {
+          "height": undefined,
+          "width": undefined,
+        }
+      }
+    />
+  </div>,
+  <div
+    className="MuiTypography-root MuiTypography-h2 css-1sra7t5-MuiTypography-root"
+  >
+    <span
+      className="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1e1x4vv-MuiSkeleton-root"
+      style={
+        {
+          "height": undefined,
+          "width": undefined,
+        }
+      }
+    />
+  </div>,
+]
+`;
