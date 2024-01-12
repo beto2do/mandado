@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { GeneralError } from './general-error'
+import { GeneralError } from '@/components/common'
 
 const mockCallback = jest.fn(() =>{});
 
