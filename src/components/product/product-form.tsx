@@ -4,9 +4,16 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
-import { FormControlError, Product } from '@/models'
+import { FormControlError, Product, SnackbarModel } from '@/models'
 import { FormEvent, ChangeEvent, useState } from 'react'
 import { createNewProduct } from '@/services'
+import {
+    globalSnackbarSlice,
+    useSelector,
+    useDispatch,
+    selectSnackbar
+} 
+from '@/lib/redux';
 
 export function ProductForm({onSuccessful}:{onSuccessful:any}) {
     const defaultError = {error: false, msg: ''};
@@ -23,13 +30,19 @@ export function ProductForm({onSuccessful}:{onSuccessful:any}) {
     const [fatError, setFatError] = useState<FormControlError>(defaultError);
     const [carbsError, setCarbsError] = useState<FormControlError>(defaultError);
     const [proteinError, setProteinError] = useState<FormControlError>(defaultError);
+    const snackbar: SnackbarModel = useSelector(selectSnackbar);
+    const dispatch = useDispatch();
 
     function handleSubmit(event:FormEvent<HTMLFormElement>) {
         event.preventDefault();
         if(validateProperties()) {
             createNewProduct(productProperties as Product).then((data) => {
                 //TODO refresh products table
-                //TODO add banner to notify the user of successful creation
+                dispatch(globalSnackbarSlice.actions.showSnackBar({
+                    ...snackbar,
+                    message: 'A product has been created',
+                    open:true
+                }))
                 onSuccessful();
             });
         }
