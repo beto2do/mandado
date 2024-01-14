@@ -23,3 +23,8 @@ export interface PantryTable {
     headers: TableHeaders[],
     rows: TableRows[],
 }
+
+export interface MenuLink {
+    label: string,
+    path: string,
+}

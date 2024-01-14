@@ -11,7 +11,8 @@ import Container from '@mui/material/Container';
 import MenuItem from '@mui/material/MenuItem';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
-import { LogoApp } from '@/components/common'
+import { LogoApp, NavMenu } from '@/components/common'
+import { ResponsiveView } from '@/models'
 
 const pages = [
     {
@@ -92,18 +93,7 @@ export function GlobalNavBar() {
                         </Menu>
                     </Box>
                     <LogoApp mobile={true}/>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
-                            <Link
-                            className='block text-white my-4 px-2 py-1.5'
-                            key={page.label}
-                            onClick={handleCloseNavMenu}
-                            href={page.path}
-                            >
-                            {page.label}
-                            </Link>
-                        ))}
-                    </Box>
+                    <NavMenu pages={pages} onClick={handleCloseNavMenu} className={ResponsiveView.DESKTOP}/>
                     {segment !== 'login' ? <Link href="/login">Login</Link> : null}
                 </Toolbar>
             </Container>
