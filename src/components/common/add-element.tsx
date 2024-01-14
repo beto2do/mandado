@@ -2,19 +2,21 @@ import { ChangeEventHandler, KeyboardEventHandler, MouseEventHandler } from 'rea
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
+type AddElementProps = {
+    text: string, 
+    isEmpty: boolean, 
+    onChange: ChangeEventHandler<HTMLInputElement>, 
+    pressEnter: KeyboardEventHandler<HTMLDivElement>, 
+    addElement: MouseEventHandler<HTMLButtonElement>,
+}
+
 export function AddElement({
     text, 
     isEmpty, 
     onChange, 
     pressEnter, 
     addElement
-    }: {
-    text: string, 
-    isEmpty: boolean, 
-    onChange: ChangeEventHandler<HTMLInputElement>, 
-    pressEnter: KeyboardEventHandler<HTMLDivElement>, 
-    addElement: MouseEventHandler<HTMLButtonElement>
-    }) {
+    }: AddElementProps) {
 
     return (
     <div className="flex gap-1">

@@ -6,19 +6,22 @@ import MenuItem from '@mui/material/MenuItem';
 import Link from 'next/link';
 import { MenuLink } from '@/models';
 
+type HamburgerMenuParameters = {
+    pages:MenuLink[], 
+    anchorElNav:null | HTMLElement
+    onClick:(event: React.MouseEvent<HTMLElement>) => void, 
+    onClose:() => void, 
+    className?: string
+}
+
 export function HamburgerMenu({
         pages, 
         anchorElNav,
         onClick, 
         onClose, 
         className = ''
-    }:{
-        pages:MenuLink[], 
-        anchorElNav:null | HTMLElement
-        onClick:(event: React.MouseEvent<HTMLElement>) => void, 
-        onClose:() => void, 
-        className?: string
-    }) {
+    }
+    :HamburgerMenuParameters) {
     return (
         <Box className={`flex grow ${className}`}>
         <IconButton

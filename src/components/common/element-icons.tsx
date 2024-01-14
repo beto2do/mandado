@@ -5,18 +5,19 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import AddCirculeIcon from '@mui/icons-material/AddCircle';
 
+type ElementIconsProps = {
+    product: Product, 
+    onEditEvent?: MouseEventHandler<Element> | undefined, 
+    onDeleteEvent?: MouseEventHandler<Element> | undefined,
+    onSaveEvent?: MouseEventHandler<Element> | undefined,
+}
+
 export function ElementIcons({
     product, 
     onEditEvent, 
     onDeleteEvent,
     onSaveEvent,
-    }: {
-        product: Product, 
-        onEditEvent?: MouseEventHandler<Element> | undefined, 
-        onDeleteEvent?: MouseEventHandler<Element> | undefined,
-        onSaveEvent?: MouseEventHandler<Element> | undefined,
-    }) 
-{
+    }: ElementIconsProps) {
     const isEditionStatus = product.status === ProductStatus.EDITION;
     const editionView = isEditionStatus ?  
     <IconButton 

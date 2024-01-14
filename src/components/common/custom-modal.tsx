@@ -9,7 +9,13 @@ const style = {
     transform: 'translate(-50%, -50%)',
 };
 
-export function CustomModal({open, onClose, children}:{open: boolean, onClose: ((event: {}, reason: "backdropClick" | "escapeKeyDown") => void) | undefined, children: ReactElement<any, string | JSXElementConstructor<any>> }) {
+type CustomModalProps = {
+    open: boolean, 
+    onClose: ((event: {}, reason: "backdropClick" | "escapeKeyDown") => void) | undefined, 
+    children: ReactElement<any, string | JSXElementConstructor<any>> 
+}
+
+export function CustomModal({open, onClose, children}: CustomModalProps) {
     return (
         <Modal
         open={open}
