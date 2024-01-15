@@ -1,8 +1,9 @@
 import { TableCellBaseProps } from '@mui/material/TableCell/TableCell'
 
+type AlignValue = 'inherit' | 'left' | 'center' | 'right' | 'justify';
 export interface TableHeaders {
     label: string, 
-    align?: 'inherit' | 'left' | 'center' | 'right' | 'justify',
+    align?: AlignValue,
 }
 
 export interface TableRows {
@@ -12,7 +13,7 @@ export interface TableRows {
 
 export interface TableCell {
     label:string, 
-    align?: 'inherit' | 'left' | 'center' | 'right' | 'justify', 
+    align?: AlignValue, 
     component?: React.ElementType<React.ThHTMLAttributes<HTMLTableCellElement>>, 
     scope?:TableCellBaseProps['scope'],
     chip?: string

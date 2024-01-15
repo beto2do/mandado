@@ -2,7 +2,7 @@ export interface Tile {
     title: string,
     content: string,
     action: string,
-    imgUrl: string,
+    imgUrl: TileImagesName,
     actionUrl: string
 }
 
@@ -12,3 +12,5 @@ export enum TileImages {
     CHICKEN = 'chicken.jpg',
     STRAWBERRY = 'strawberry.jpg',
 }
+
+export type TileImagesName = TileImages.CHICKEN | TileImages.GROCERY | TileImages.SANDWICH | TileImages.STRAWBERRY

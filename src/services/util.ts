@@ -1,8 +1,8 @@
 'use server'
-import { TileImages } from '@/models'
+import { TileImages, TileImagesName } from '@/models'
 
 //get image when the name is dynamic
-export async function getImage(imageName: string) {
+export async function getImage(imageName: TileImagesName) {
 
     switch (imageName) {
         case TileImages.GROCERY:
