@@ -1,11 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { SnackbarModel, SnackbarState } from '@/models'
+import { SnackbarModel, SnackbarState, SnackbarClass } from '@/models'
 
-const defaultSnackbar: SnackbarModel = {
-  open: false,
-  autoHideDuration: 6000,
-  message: '',
-}
+const defaultSnackbar: SnackbarModel =  new SnackbarClass(false, 6000, '');
 
 const initialState: SnackbarState = {
     snackbar: defaultSnackbar
