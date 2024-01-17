@@ -1,10 +1,10 @@
 import StoreFront from '@mui/icons-material/Storefront';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
-import { ResponsiveView } from '@/models';
+import { responsiveView } from '@/models';
 
 export function LogoApp({ mobile=false }) {
-    const mobileClasses = mobile ? ResponsiveView.MOBILE: ResponsiveView.DESKTOP;
+    const mobileClasses = mobile ? responsiveView.MOBILE: responsiveView.DESKTOP;
     const growClass = mobile ? 'grow sm:grow md:grow':'';
     const typographyClasses = `mr-4 font-mono font-bold tracking-widest text-inherit no-underline ${mobileClasses} ${growClass}`;
 
