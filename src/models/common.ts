@@ -1,10 +1,8 @@
 import { TableCellBaseProps } from '@mui/material/TableCell/TableCell'
 
 type AlignValue = 'inherit' | 'left' | 'center' | 'right' | 'justify';
-export interface TableHeaders {
-    label: string, 
-    align?: AlignValue,
-}
+
+export type TableHeaders = Pick<TableCell,"label" | "align">
 
 export interface TableRows {
     id: string, 

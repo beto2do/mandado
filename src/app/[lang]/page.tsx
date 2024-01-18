@@ -9,7 +9,7 @@ export default async function IndexPage({
   params: { lang: Locale }
 }) {
   const dictionary = await getDictionary(lang)
-  const tiles: Tile[] = dictionary.dashboard.tiles;
+  const tiles: Tile[] = dictionary.dashboard.tiles as Tile[];
 
   const markupTiles = tiles.map((tile: Tile) => {
     return <DashboardTile key={tile.title} tile={tile}></DashboardTile>;
