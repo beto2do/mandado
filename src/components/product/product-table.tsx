@@ -8,6 +8,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import InventorySharpIcon from '@mui/icons-material/InventorySharp';
 import PendingActionsIcon from '@mui/icons-material/PendingActions';
+import EditIcon from '@mui/icons-material/Edit';
+import IconButton from '@mui/material/IconButton';
 import { useEffect, useState } from 'react';
 import { Product } from '@/models';
 
@@ -29,6 +31,10 @@ export function ProductTable() {
         }
     },[]);
 
+    const handleProductEdition = (id: string) => {
+      alert('id => '+id)
+    }
+
     return (
         <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -41,6 +47,7 @@ export function ProductTable() {
               <TableCell className='text-white' align="right">Carbs&nbsp;(g)</TableCell>
               <TableCell className='text-white' align="right">Protein&nbsp;(g)</TableCell>
               <TableCell className='text-white' align="right">Out of Stock</TableCell>
+              <TableCell className='text-white' align="right">Edition</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -59,6 +66,11 @@ export function ProductTable() {
                 <TableCell align="right">{row.carbs}</TableCell>
                 <TableCell align="right">{row.protein}</TableCell>
                 <TableCell align="right">{row.isOutOfStock ? <InventorySharpIcon className='text-green-600' /> : <PendingActionsIcon className='text-gray-500' />}</TableCell>
+                <TableCell align="right">
+                  <IconButton aria-label="edit" onClick={() => {handleProductEdition(row._id)}}>
+                    <EditIcon className='text-red-500'/>
+                  </IconButton>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
