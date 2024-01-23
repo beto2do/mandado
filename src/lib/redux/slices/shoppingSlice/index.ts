@@ -1,2 +1,2 @@
-export * from './shoppingSlice'
-export * from './selectors'
+export * from "./shoppingSlice";
+export * from "./selectors";

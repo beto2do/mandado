@@ -1,8 +1,7 @@
-import { Product } from '@/models'
+import { Product } from "@/models";
 
 export async function createNewProduct(product: Product) {
-
-  const response = await fetch('/api/product', {
+  const response = await fetch("/api/product", {
     method: "POST",
     mode: "cors",
     cache: "no-cache",
@@ -14,6 +13,6 @@ export async function createNewProduct(product: Product) {
     referrerPolicy: "no-referrer",
     body: JSON.stringify(product),
   });
-  
+
   return response.json();
 }

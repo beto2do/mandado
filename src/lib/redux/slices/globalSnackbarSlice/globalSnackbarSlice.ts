@@ -1,14 +1,14 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { SnackbarModel, SnackbarState, SnackbarClass } from '@/models'
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { SnackbarModel, SnackbarState, SnackbarClass } from "@/models";
 
-const defaultSnackbar: SnackbarModel =  new SnackbarClass(false, 6000, '');
+const defaultSnackbar: SnackbarModel = new SnackbarClass(false, 6000, "");
 
 const initialState: SnackbarState = {
-    snackbar: defaultSnackbar
-}
+  snackbar: defaultSnackbar,
+};
 
 export const globalSnackbarSlice = createSlice({
-  name: 'globalSnackbar',
+  name: "globalSnackbar",
   initialState,
   reducers: {
     showSnackBar: (state, action: PayloadAction<SnackbarModel>) => {
@@ -17,9 +17,9 @@ export const globalSnackbarSlice = createSlice({
     reset: (state) => {
       state.snackbar = defaultSnackbar;
     },
-  }
-})
+  },
+});
 
-export const { showSnackBar, reset } = globalSnackbarSlice.actions
+export const { showSnackBar, reset } = globalSnackbarSlice.actions;
 
-export default globalSnackbarSlice.reducer
+export default globalSnackbarSlice.reducer;

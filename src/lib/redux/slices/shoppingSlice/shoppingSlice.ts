@@ -1,12 +1,12 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Product, ShoppingSliceState } from '@/models/product'
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Product, ShoppingSliceState } from "@/models/product";
 
 const initialState: ShoppingSliceState = {
-    products: []
-  }
+  products: [],
+};
 
 export const shoppingSlice = createSlice({
-  name: 'shopping',
+  name: "shopping",
   initialState,
   reducers: {
     upload: (state, action: PayloadAction<Product[]>) => {
@@ -16,37 +16,41 @@ export const shoppingSlice = createSlice({
       state.products.push(action.payload);
     },
     updateIsGrabbed: (state, action: PayloadAction<Product>) => {
-        let product = state.products.find(product => action.payload._id === product._id);
-        if(product) {
-            product.isGrabbed = action.payload.isGrabbed;
-        }
+      let product = state.products.find(
+        (product) => action.payload._id === product._id,
+      );
+      if (product) {
+        product.isGrabbed = action.payload.isGrabbed;
+      }
     },
     changeStatus: (state, action: PayloadAction<Product>) => {
-      let product = state.products.find(product => action.payload._id === product._id);
-      if(product) {
-          product.status = action.payload.status;
+      let product = state.products.find(
+        (product) => action.payload._id === product._id,
+      );
+      if (product) {
+        product.status = action.payload.status;
       }
     },
     changeName: (state, action: PayloadAction<Product>) => {
-      let product = state.products.find(product => action.payload._id === product._id);
-      if(product) {
-          product.name = action.payload.name;
+      let product = state.products.find(
+        (product) => action.payload._id === product._id,
+      );
+      if (product) {
+        product.name = action.payload.name;
       }
     },
     delete: (state, action: PayloadAction<Product>) => {
-        let productIndex = state.products.findIndex(product => action.payload._id === product._id);
-        if (productIndex > -1) {
-            state.products.splice(productIndex, 1);
-          }
+      let productIndex = state.products.findIndex(
+        (product) => action.payload._id === product._id,
+      );
+      if (productIndex > -1) {
+        state.products.splice(productIndex, 1);
+      }
     },
-  }
-})
+  },
+});
 
-export const { 
-  add, 
-  upload, 
-  updateIsGrabbed, 
-  changeName,
-} = shoppingSlice.actions
+export const { add, upload, updateIsGrabbed, changeName } =
+  shoppingSlice.actions;
 
-export default shoppingSlice.reducer
+export default shoppingSlice.reducer;

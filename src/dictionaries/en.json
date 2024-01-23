@@ -1,47 +1,47 @@
 {
-    "dashboard": {
-        "tiles": [
-            {
-              "title": "Shop your Grocery",
-              "content": "Track your grocery list when your at the super market.",
-              "action": "Go super market",
-              "imgUrl": "grocery.jpg",
-              "actionUrl": "/shop"
-            },
-            {
-              "title": "See meals",
-              "content": "Take a look what you want to cook today.",
-              "action": "Let's cook",
-              "imgUrl": "sandwich.jpg",
-              "actionUrl": "/meal"
-            },
-            {
-              "title": "Kitken",
-              "content": "Is your kitken empty? double check what you have in your pantry.",
-              "action": "Look at your pantry",
-              "imgUrl": "chicken.jpg",
-              "actionUrl": "/pantry"
-            }
-        ]
-    },
-    "navBar": {
-        "links":  [
-            {
-                "label":"Shopping", 
-                "path":"/shop"
-            },
-            {
-                "label":"Meals",
-                "path":"/meal"
-            },
-            {
-                "label":"Pantry", 
-                "path":"/pantry"
-            },
-            {
-                "label":"Recipes", 
-                "path":"/recipe"
-            }
-        ]
-    }
+  "dashboard": {
+    "tiles": [
+      {
+        "title": "Shop your Grocery",
+        "content": "Track your grocery list when your at the super market.",
+        "action": "Go super market",
+        "imgUrl": "grocery.jpg",
+        "actionUrl": "/shop"
+      },
+      {
+        "title": "See meals",
+        "content": "Take a look what you want to cook today.",
+        "action": "Let's cook",
+        "imgUrl": "sandwich.jpg",
+        "actionUrl": "/meal"
+      },
+      {
+        "title": "Kitken",
+        "content": "Is your kitken empty? double check what you have in your pantry.",
+        "action": "Look at your pantry",
+        "imgUrl": "chicken.jpg",
+        "actionUrl": "/pantry"
+      }
+    ]
+  },
+  "navBar": {
+    "links": [
+      {
+        "label": "Shopping",
+        "path": "/shop"
+      },
+      {
+        "label": "Meals",
+        "path": "/meal"
+      },
+      {
+        "label": "Pantry",
+        "path": "/pantry"
+      },
+      {
+        "label": "Recipes",
+        "path": "/recipe"
+      }
+    ]
+  }
 }

@@ -1,2 +1,2 @@
-export * from './pantry'
-export * from './pantry-table'
+export * from "./pantry";
+export * from "./pantry-table";

@@ -1,3 +1,3 @@
-import type { ReduxState } from '@/lib/redux'
+import type { ReduxState } from "@/lib/redux";
 
-export const selectProducts = (state: ReduxState) => state.shopping.products
+export const selectProducts = (state: ReduxState) => state.shopping.products;

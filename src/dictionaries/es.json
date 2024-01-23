@@ -1,47 +1,47 @@
 {
-    "dashboard": {
-        "tiles": [
-            {
-              "title": "Comprar comestibles",
-              "content": "Revisa la lista de comestibles cuando estas en el super mercado",
-              "action": "Ver lista de super",
-              "imgUrl": "grocery.jpg",
-              "actionUrl": "/shop"
-            },
-            {
-              "title": "Comidas",
-              "content": "Hecha un vistazo a la comida que quieras hoy cocinar.",
-              "action": "Comienza eligiendo",
-              "imgUrl": "sandwich.jpg",
-              "actionUrl": "/meal"
-            },
-            {
-              "title": "Mi cocina",
-              "content": "Mi cocina esta vacia? checa tu alacena.",
-              "action": "Ver mis comestibles",
-              "imgUrl": "chicken.jpg",
-              "actionUrl": "/pantry"
-            }
-        ]
-    },
-    "navBar": {
-        "links":  [
-            {
-                "label":"Super Mercado", 
-                "path":"/shop"
-            },
-            {
-                "label":"Comidas",
-                "path":"/meal"
-            },
-            {
-                "label":"Alacena", 
-                "path":"/pantry"
-            },
-            {
-                "label":"Recetas", 
-                "path":"/recipe"
-            }
-        ]
-    }
+  "dashboard": {
+    "tiles": [
+      {
+        "title": "Comprar comestibles",
+        "content": "Revisa la lista de comestibles cuando estas en el super mercado",
+        "action": "Ver lista de super",
+        "imgUrl": "grocery.jpg",
+        "actionUrl": "/shop"
+      },
+      {
+        "title": "Comidas",
+        "content": "Hecha un vistazo a la comida que quieras hoy cocinar.",
+        "action": "Comienza eligiendo",
+        "imgUrl": "sandwich.jpg",
+        "actionUrl": "/meal"
+      },
+      {
+        "title": "Mi cocina",
+        "content": "Mi cocina esta vacia? checa tu alacena.",
+        "action": "Ver mis comestibles",
+        "imgUrl": "chicken.jpg",
+        "actionUrl": "/pantry"
+      }
+    ]
+  },
+  "navBar": {
+    "links": [
+      {
+        "label": "Super Mercado",
+        "path": "/shop"
+      },
+      {
+        "label": "Comidas",
+        "path": "/meal"
+      },
+      {
+        "label": "Alacena",
+        "path": "/pantry"
+      },
+      {
+        "label": "Recetas",
+        "path": "/recipe"
+      }
+    ]
+  }
 }
