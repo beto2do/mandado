@@ -7,15 +7,7 @@ export interface SnackbarModel {
 }
 
 export class SnackbarClass implements SnackbarModel {
-    open: boolean;
-    autoHideDuration: number;
-    message: ReactNode;
-
-    constructor(open: boolean, autoHideDuration: number, message: ReactNode) {
-        this.open = open;
-        this.autoHideDuration = autoHideDuration;
-        this.message = message;
-    }
+    constructor(public open: boolean, public autoHideDuration: number, public message: ReactNode) {}
 }
 
 export interface SnackbarState {
