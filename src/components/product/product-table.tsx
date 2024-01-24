@@ -12,6 +12,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
 import { useEffect, useState } from "react";
 import { Product } from "@/models";
+import { getProducts } from "@/services";
 
 export function ProductTable() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -19,13 +20,12 @@ export function ProductTable() {
   useEffect(() => {
     let ignore = false;
 
-    fetch("/api/product")
-      .then((response) => response.json())
-      .then((dataProducts) => {
-        if (!ignore) {
-          setProducts(dataProducts);
-        }
-      });
+    getProducts().then((dataProducts) => {
+      if (!ignore) {
+        setProducts(dataProducts);
+      }
+    });
+
     return () => {
       ignore = true;
     };
