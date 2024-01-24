@@ -6,10 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import InventorySharpIcon from "@mui/icons-material/InventorySharp";
-import PendingActionsIcon from "@mui/icons-material/PendingActions";
-import EditIcon from "@mui/icons-material/Edit";
-import IconButton from "@mui/material/IconButton";
+import { ProductRows } from "@/components/product";
 import { useEffect, useState } from "react";
 import { Product } from "@/models";
 import { getProducts } from "@/services";
@@ -30,10 +27,6 @@ export function ProductTable() {
       ignore = true;
     };
   }, []);
-
-  const handleProductEdition = (id: string) => {
-    alert("id => " + id);
-  };
 
   return (
     <TableContainer component={Paper}>
@@ -65,39 +58,7 @@ export function ProductTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {products.map((row) => (
-            <TableRow
-              hover
-              key={row.name}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.category}</TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-              <TableCell align="right">
-                {row.isOutOfStock ? (
-                  <InventorySharpIcon className="text-green-600" />
-                ) : (
-                  <PendingActionsIcon className="text-gray-500" />
-                )}
-              </TableCell>
-              <TableCell align="right">
-                <IconButton
-                  aria-label="edit"
-                  onClick={() => {
-                    handleProductEdition(row._id);
-                  }}
-                >
-                  <EditIcon className="text-red-500" />
-                </IconButton>
-              </TableCell>
-            </TableRow>
-          ))}
+          <ProductRows products={products}/>
         </TableBody>
       </Table>
     </TableContainer>
