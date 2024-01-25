@@ -58,7 +58,7 @@ export function ProductTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          <ProductRows products={products}/>
+          <ProductRows products={products} />
         </TableBody>
       </Table>
     </TableContainer>
