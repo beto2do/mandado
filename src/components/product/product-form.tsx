@@ -4,7 +4,12 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
-import { FormControlError, Product, SnackbarModel } from "@/models";
+import {
+  FormControlError,
+  SnackbarModel,
+  ProductPayload,
+  ErrorProductProp,
+} from "@/models";
 import { FormEvent, ChangeEvent, useState } from "react";
 import { createNewProduct } from "@/services";
 import {
@@ -22,9 +27,9 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
   const fatMessage = "Fat field is required";
   const carbsMessage = "Carbs field is required";
   const proteinMessage = "Protein field is required";
-  const [productProperties, setProductProperties] = useState({
-    isOutOfStock: true,
-  });
+  const [productProperties, setProductProperties] = useState<ProductPayload>(
+    new ProductPayload(),
+  );
   const [nameError, setNameError] = useState<FormControlError>(defaultError);
   const [categoryError, setCategoryError] =
     useState<FormControlError>(defaultError);
@@ -40,7 +45,7 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (validateProperties()) {
-      createNewProduct(productProperties as Product).then((data) => {
+      createNewProduct(productProperties.getInsertProduct()).then((data) => {
         //TODO refresh products table
         dispatch(
           globalSnackbarSlice.actions.showSnackBar({
@@ -55,8 +60,7 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
   }
 
   function validateProperties() {
-    let product = productProperties as Product;
-    let numErrors = 0;
+    let { totalErrors, errors } = productProperties.getErrors();
 
     setNameError(defaultError);
     setCategoryError(defaultError);
@@ -65,32 +69,26 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
     setCarbsError(defaultError);
     setProteinError(defaultError);
 
-    if (!product.name) {
+    if (errors.includes(ErrorProductProp.name)) {
       setNameError({ error: true, msg: nameMessage });
-      numErrors++;
     }
-    if (!product.category) {
+    if (errors.includes(ErrorProductProp.category)) {
       setCategoryError({ error: true, msg: categoryMessage });
-      numErrors++;
     }
-    if (!product.calories) {
+    if (errors.includes(ErrorProductProp.calories)) {
       setCaloriesError({ error: true, msg: caloriesMessage });
-      numErrors++;
     }
-    if (!product.fat) {
+    if (errors.includes(ErrorProductProp.fat)) {
       setFatError({ error: true, msg: fatMessage });
-      numErrors++;
     }
-    if (!product.carbs) {
+    if (errors.includes(ErrorProductProp.carbs)) {
       setCarbsError({ error: true, msg: carbsMessage });
-      numErrors++;
     }
-    if (!product.protein) {
+    if (errors.includes(ErrorProductProp.protein)) {
       setProteinError({ error: true, msg: proteinMessage });
-      numErrors++;
     }
 
-    return numErrors === 0;
+    return totalErrors === 0;
   }
 
   const handleChange = (
@@ -99,7 +97,14 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
   ) => {
     const name = event.target.name;
     const value = name === "isOutOfStock" ? checked : event.target.value;
-    setProductProperties((properties) => ({ ...properties, [name]: value }));
+    setProductProperties((properties) => ({
+      ...properties,
+      getErrors: properties.getErrors,
+      validate: properties.validate,
+      errors: properties.errors,
+      getInsertProduct: properties.getInsertProduct,
+      [name]: value,
+    }));
   };
 
   return (

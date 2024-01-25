@@ -1,8 +1,8 @@
-import { Product } from "@/models";
+import { InsertProduct } from "@/models";
 
 const urlProduct = "/api/product";
 
-export async function createNewProduct(product: Product) {
+export async function createNewProduct(product: InsertProduct) {
   const response = await fetch(urlProduct, {
     method: "POST",
     mode: "cors",
