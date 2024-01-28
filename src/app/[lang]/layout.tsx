@@ -4,6 +4,7 @@ import { Providers } from "@/lib/providers";
 import "./globals.css";
 import { GlobalNavBar, GlobalSnackbar } from "@/components/common";
 import { i18n } from "../../../i18n-config";
+import CustomThemeProvider from "@/theme/provider";
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
@@ -29,10 +30,12 @@ export default function RootLayout({
     <Providers>
       <html lang={params ? params.lang : "en"}>
         <body className={inter.className}>
-          <GlobalNavBar />
-          <main className="m-6">{children}</main>
-          {modal}
-          <GlobalSnackbar />
+          <CustomThemeProvider>
+            <GlobalNavBar />
+            <main className="m-6">{children}</main>
+            {modal}
+            <GlobalSnackbar />
+          </CustomThemeProvider>
         </body>
       </html>
     </Providers>
