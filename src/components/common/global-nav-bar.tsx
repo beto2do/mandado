@@ -7,7 +7,6 @@ import Container from "@mui/material/Container";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { LogoApp, NavMenu, HamburgerMenu } from "@/components/common";
-import { responsiveView } from "@/models";
 
 const pages = [
   {
@@ -42,7 +41,7 @@ export function GlobalNavBar() {
 
   return (
     <>
-      <AppBar position="static" sx={{ backgroundColor: "#ef4444" }}>
+      <AppBar position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <LogoApp />
@@ -51,14 +50,9 @@ export function GlobalNavBar() {
               anchorElNav={anchorElNav}
               onClick={handleOpenNavMenu}
               onClose={handleCloseNavMenu}
-              className={responsiveView.MOBILE}
             />
             <LogoApp mobile={true} />
-            <NavMenu
-              pages={pages}
-              onClick={handleCloseNavMenu}
-              className={responsiveView.DESKTOP}
-            />
+            <NavMenu pages={pages} onClick={handleCloseNavMenu} />
             {segment !== "login" ? <Link href="/login">Login</Link> : null}
           </Toolbar>
         </Container>

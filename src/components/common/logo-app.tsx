@@ -1,17 +1,22 @@
 import StoreFront from "@mui/icons-material/Storefront";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
-import { responsiveView } from "@/models";
+import { mobileDisplay, desktopDisplay } from "@/theme";
 
 export function LogoApp({ mobile = false }) {
-  const mobileClasses = mobile ? responsiveView.MOBILE : responsiveView.DESKTOP;
+  const breakpointStyle = mobile ? mobileDisplay : desktopDisplay;
   const growClass = mobile ? "grow sm:grow md:grow" : "";
-  const typographyClasses = `mr-4 font-mono font-bold tracking-widest text-inherit no-underline ${mobileClasses} ${growClass}`;
+  const typographyClasses = `mr-4  font-bold tracking-widest text-inherit no-underline ${growClass}`;
 
   return (
     <>
-      <StoreFront className={`mr-2 ${mobileClasses}`} />
-      <Typography variant="h6" noWrap className={typographyClasses}>
+      <StoreFront className={`mr-2`} sx={breakpointStyle} />
+      <Typography
+        variant="h6"
+        noWrap
+        className={typographyClasses}
+        sx={breakpointStyle}
+      >
         <Link href="/">Man-dado</Link>
       </Typography>
     </>

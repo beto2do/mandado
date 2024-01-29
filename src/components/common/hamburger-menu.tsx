@@ -5,13 +5,13 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
 import { MenuLink } from "@/models";
+import { mobileDisplay } from "@/theme";
 
 type HamburgerMenuParameters = {
   pages: MenuLink[];
   anchorElNav: null | HTMLElement;
   onClick: (event: React.MouseEvent<HTMLElement>) => void;
   onClose: () => void;
-  className?: string;
 };
 
 export function HamburgerMenu({
@@ -19,10 +19,9 @@ export function HamburgerMenu({
   anchorElNav,
   onClick,
   onClose,
-  className = "",
 }: HamburgerMenuParameters) {
   return (
-    <Box className={`flex grow ${className}`}>
+    <Box className="grow" sx={mobileDisplay}>
       <IconButton
         size="large"
         aria-label="account of current user"
