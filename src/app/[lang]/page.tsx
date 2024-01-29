@@ -11,6 +11,5 @@ export default async function IndexPage({
   const dictionary = await getDictionary(lang);
   const tiles: Tile[] = dictionary.dashboard.tiles as Tile[];
 
-
-  return (<Dashboard tiles={tiles}></Dashboard>);
+  return <Dashboard tiles={tiles}></Dashboard>;
 }

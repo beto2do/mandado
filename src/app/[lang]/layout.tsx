@@ -5,7 +5,7 @@ import "./globals.css";
 import { GlobalNavBar, GlobalSnackbar } from "@/components/common";
 import { i18n } from "../../../i18n-config";
 import CustomThemeProvider from "@/theme/provider";
-import Grid from "@mui/material/Unstable_Grid2";
+import Grid from "@mui/material/Grid";
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
@@ -34,8 +34,8 @@ export default function RootLayout({
           <CustomThemeProvider>
             <GlobalNavBar />
             <Grid container justifyContent="center">
-              <Grid xs={12} md={8}>
-                <main className="flex justify-start flex-wrap gap-5 m-6">{children}</main>
+              <Grid item xs={12} md={8}>
+                <main className="m-6">{children}</main>
               </Grid>
             </Grid>
             {modal}

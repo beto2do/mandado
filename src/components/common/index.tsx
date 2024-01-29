@@ -11,4 +11,4 @@ export * from "./global-snackbar";
 export * from "./logo-app";
 export * from "./nav-menu";
 export * from "./hamburger-menu";
-export * from "./dashboard"
+export * from "./dashboard";
