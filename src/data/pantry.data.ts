@@ -8,7 +8,7 @@ import {
   TableHeaders,
   Product,
 } from "@/models";
-import { TableCellBaseProps } from "@mui/material/TableCell/TableCell";
+import { TableCellBaseProps } from "@mui/material/TableCell";
 
 function createHeader(category: string): TableHeaders[] {
   return [

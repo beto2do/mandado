@@ -1,4 +1,4 @@
-import { TableCellBaseProps } from "@mui/material/TableCell/TableCell";
+import { TableCellBaseProps } from "@mui/material/TableCell";
 
 type AlignValue = "inherit" | "left" | "center" | "right" | "justify";
 
