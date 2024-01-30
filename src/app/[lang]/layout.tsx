@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Providers } from "@/lib/providers";
-import "./globals.css";
 import { GlobalNavBar, GlobalSnackbar } from "@/components/common";
 import { i18n } from "../../../i18n-config";
 import CustomThemeProvider from "@/theme/provider";
@@ -30,7 +29,7 @@ export default function RootLayout({
   return (
     <Providers>
       <html lang={params ? params.lang : "en"}>
-        <body className={inter.className}>
+        <body className={inter.className} id="__next">
           <CustomThemeProvider>
             <GlobalNavBar />
             <Grid container justifyContent="center">
