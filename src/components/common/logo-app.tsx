@@ -11,13 +11,10 @@ export function LogoApp({ mobile = false }) {
   return (
     <>
       <StoreFront className={`mr-2`} sx={breakpointStyle} />
-      <Typography
-        variant="h6"
-        noWrap
-        className={typographyClasses}
-        sx={breakpointStyle}
-      >
-        <Link href="/">Man-dado</Link>
+      <Typography variant="h6" noWrap sx={breakpointStyle}>
+        <Link className={typographyClasses} href="/">
+          Man-dado
+        </Link>
       </Typography>
     </>
   );

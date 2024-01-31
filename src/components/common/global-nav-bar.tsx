@@ -53,7 +53,14 @@ export function GlobalNavBar() {
             />
             <LogoApp mobile={true} />
             <NavMenu pages={pages} onClick={handleCloseNavMenu} />
-            {segment !== "login" ? <Link href="/login">Login</Link> : null}
+            {segment !== "login" ? (
+              <Link
+                className="font-bold text-inherit no-underline"
+                href="/login"
+              >
+                Login
+              </Link>
+            ) : null}
           </Toolbar>
         </Container>
       </AppBar>
