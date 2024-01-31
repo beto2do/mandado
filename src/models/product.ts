@@ -12,6 +12,8 @@ export interface Product {
   isOutOfStock: boolean;
 }
 
+export type IdProduct = Product["_id"];
+
 export type InsertProduct = Omit<Product, "_id">;
 
 export enum ErrorProductProp {
@@ -80,6 +82,11 @@ export class ProductPayload implements Required<Product> {
 }
 export interface ShoppingSliceState {
   products: Product[];
+}
+
+export interface ProductSliceState {
+  products: Product[];
+  editableProduct?: Product;
 }
 
 export enum ProductStatus {
