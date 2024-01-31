@@ -157,6 +157,7 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
 
   const muiFields = fieldsData.map((productField) => (
     <TextField
+      key={productField.name}
       name={productField.name}
       label={productField.label}
       error={productField.error}
