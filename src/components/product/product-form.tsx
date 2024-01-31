@@ -9,6 +9,7 @@ import {
   SnackbarModel,
   ProductPayload,
   ErrorProductProp,
+  ProductFields,
 } from "@/models";
 import { FormEvent, ChangeEvent, useState } from "react";
 import { createNewProduct } from "@/services";
@@ -27,6 +28,8 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
   const fatMessage = "Fat field is required";
   const carbsMessage = "Carbs field is required";
   const proteinMessage = "Protein field is required";
+  let formTitle = "Add New Product";
+  let submitButtonLabel = "Create";
   const [productProperties, setProductProperties] = useState<ProductPayload>(
     new ProductPayload(),
   );
@@ -107,75 +110,69 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
     }));
   };
 
+  const fieldsData: ProductFields[] = [
+    {
+      name: "name",
+      label: "name",
+      error: nameError.error,
+      helperText: nameError.msg,
+      type: "text",
+    },
+    {
+      name: "category",
+      label: "category",
+      error: categoryError.error,
+      helperText: categoryError.msg,
+      type: "text",
+    },
+    {
+      name: "calories",
+      label: "calories",
+      error: caloriesError.error,
+      helperText: caloriesError.msg,
+      type: "number",
+    },
+    {
+      name: "fat",
+      label: "fat",
+      error: fatError.error,
+      helperText: fatError.msg,
+      type: "number",
+    },
+    {
+      name: "carbs",
+      label: "carbs",
+      error: carbsError.error,
+      helperText: carbsError.msg,
+      type: "number",
+    },
+    {
+      name: "protein",
+      label: "protein",
+      error: proteinError.error,
+      helperText: proteinError.msg,
+      type: "number",
+    },
+  ];
+
+  const muiFields = fieldsData.map((productField) => (
+    <TextField
+      name={productField.name}
+      label={productField.label}
+      error={productField.error}
+      helperText={productField.helperText}
+      className="my-2"
+      variant="outlined"
+      fullWidth
+      type={productField.type}
+      autoComplete="off"
+      onChange={handleChange}
+    />
+  ));
   return (
     <form className="mx-3 my-2.5" onSubmit={handleSubmit}>
-      <h2>Add New Product</h2>
-      <TextField
-        name="name"
-        label="Name"
-        error={nameError.error}
-        helperText={nameError.msg}
-        className="my-2"
-        variant="outlined"
-        fullWidth
-        autoComplete="off"
-        onChange={handleChange}
-      />
-      <TextField
-        name="category"
-        error={categoryError.error}
-        helperText={categoryError.msg}
-        className="my-2"
-        label="Category"
-        variant="outlined"
-        fullWidth
-        autoComplete="off"
-        onChange={handleChange}
-      />
-      <TextField
-        name="calories"
-        error={caloriesError.error}
-        helperText={caloriesError.msg}
-        className="my-2"
-        label="Calories"
-        type="number"
-        variant="outlined"
-        fullWidth
-        onChange={handleChange}
-      />
-      <TextField
-        name="fat"
-        error={fatError.error}
-        helperText={fatError.msg}
-        className="my-2"
-        label="Fat"
-        type="number"
-        variant="outlined"
-        fullWidth
-        onChange={handleChange}
-      />
-      <TextField
-        name="carbs"
-        error={carbsError.error}
-        helperText={carbsError.msg}
-        className="my-2"
-        label="Carbs"
-        type="number"
-        variant="outlined"
-        fullWidth
-        onChange={handleChange}
-      />
-      <TextField
-        name="protein"
-        error={proteinError.error}
-        helperText={proteinError.msg}
-        className="my-2"
-        label="Protein"
-        type="number"
-        variant="outlined"
-        fullWidth
-        onChange={handleChange}
-      />
+      <h2>{formTitle}</h2>
+      {muiFields}
       <div>
         <FormControlLabel
           name="isOutOfStock"
@@ -191,7 +188,7 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
           className="pointer-events-auto bg-red-500 text-white hover:bg-red-400 hover:border-0 border-0"
           sx={{ backgroundColor: "#ef4444" }}
         >
-          <AddIcon className="text-white" /> Create
+          <AddIcon className="text-white" /> {submitButtonLabel}
         </Button>
       </div>
     </form>

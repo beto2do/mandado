@@ -1,3 +1,4 @@
+import { ReactNode, ChangeEventHandler } from "react";
 export interface Product {
   _id: string;
   name: string;
@@ -84,4 +85,12 @@ export interface ShoppingSliceState {
 export enum ProductStatus {
   EDITION = "EDITION",
   VIEW = "VIEW",
+}
+
+export interface ProductFields {
+  name: string;
+  label: string;
+  error: boolean | undefined;
+  helperText: ReactNode;
+  type: "number" | "text";
 }
