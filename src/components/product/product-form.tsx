@@ -185,8 +185,7 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
           type="submit"
           size="small"
           variant="contained"
-          className="pointer-events-auto bg-red-500 text-white hover:bg-red-400 hover:border-0 border-0"
-          sx={{ backgroundColor: "#ef4444" }}
+          className="pointer-events-auto text-white hover:bg-red-400 hover:border-0 border-0"
         >
           <AddIcon className="text-white" /> {submitButtonLabel}
         </Button>

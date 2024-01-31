@@ -18,8 +18,7 @@ export function CreateProduct() {
     <>
       <Button
         variant="contained"
-        className="pointer-events-auto bg-red-500 text-white hover:bg-red-400 hover:border-0 border-0 h-14"
-        sx={{ backgroundColor: "#ef4444" }}
+        className="pointer-events-auto hover:bg-red-400 hover:border-0 border-0"
         onClick={handleOpen}
       >
         <AddIcon className="text-white" /> New Product

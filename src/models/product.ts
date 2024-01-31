@@ -1,4 +1,4 @@
-import { ReactNode, ChangeEventHandler } from "react";
+import { ReactNode } from "react";
 export interface Product {
   _id: string;
   name: string;
