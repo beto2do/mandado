@@ -10,16 +10,17 @@ import { ProductRows } from "@/components/product";
 import { useEffect } from "react";
 import { useSelector } from "@/lib/redux";
 import { selectAllProducts, fetchProducts, useDispatch } from "@/lib/redux";
+import { SkeletonList } from "@/components/common";
 
 export function ProductTable() {
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts);
-  const postStatus = useSelector((state) => state.product.status);
+  const productStatus = useSelector((state) => state.product.status);
 
   useEffect(() => {
     let ignore = false;
 
-    if (postStatus === "idle") {
+    if (productStatus === "idle") {
       if (!ignore) {
         dispatch(fetchProducts());
       }
@@ -28,9 +29,10 @@ export function ProductTable() {
     return () => {
       ignore = true;
     };
-  }, [postStatus, dispatch]);
+  }, [productStatus, dispatch]);
 
-  return (
+  let content;
+  const productTable = (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead className="bg-slate-600">
@@ -65,4 +67,13 @@ export function ProductTable() {
       </Table>
     </TableContainer>
   );
+
+  //TODO handle error case
+  if (productStatus === "loading" || productStatus === "idle") {
+    content = <SkeletonList />;
+  } else if (productStatus === "succeeded") {
+    content = productTable;
+  }
+
+  return content;
 }
