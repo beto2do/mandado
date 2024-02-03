@@ -11,13 +11,13 @@ import {
   ErrorProductProp,
   ProductFields,
 } from "@/models";
-import { FormEvent, ChangeEvent, useState } from "react";
-import { createNewProduct } from "@/services";
+import { FormEvent, ChangeEvent, useState, useEffect } from "react";
 import {
   globalSnackbarSlice,
   useSelector,
   useDispatch,
   selectSnackbar,
+  createProduct,
 } from "@/lib/redux";
 
 export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
@@ -44,12 +44,13 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
     useState<FormControlError>(defaultError);
   const snackbar: SnackbarModel = useSelector(selectSnackbar);
   const dispatch = useDispatch();
+  const creationStatus = useSelector((state) => state.product.creationStatus);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (validateProperties()) {
-      createNewProduct(productProperties.getInsertProduct()).then((data) => {
-        //TODO refresh products table
+  useEffect(() => {
+    let ignore = false;
+
+    if (creationStatus === "succeeded") {
+      if (!ignore) {
         dispatch(
           globalSnackbarSlice.actions.showSnackBar({
             ...snackbar,
@@ -58,7 +59,18 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
           }),
         );
         onSuccessful();
-      });
+      }
+    }
+
+    return () => {
+      ignore = true;
+    };
+  }, [creationStatus, dispatch]);
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (validateProperties()) {
+      dispatch(createProduct(productProperties.getInsertProduct()));
     }
   }
 

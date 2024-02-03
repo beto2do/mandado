@@ -9,5 +9,5 @@ export async function POST(request: Request) {
   const res = await request.json();
   //TODO validate data
   createProduct(res);
-  return Response.json({ res });
+  return Response.json(res);
 }
