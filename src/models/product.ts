@@ -86,6 +86,8 @@ export interface ShoppingSliceState {
 
 export interface ProductSliceState {
   products: Product[];
+  status: string;
+  error?: string;
   editableProduct?: Product;
 }
 

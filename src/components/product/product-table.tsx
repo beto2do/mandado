@@ -7,26 +7,28 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { ProductRows } from "@/components/product";
-import { useEffect, useState } from "react";
-import { Product } from "@/models";
-import { getProducts } from "@/services";
+import { useEffect } from "react";
+import { useSelector } from "@/lib/redux";
+import { selectAllProducts, fetchProducts, useDispatch } from "@/lib/redux";
 
 export function ProductTable() {
-  const [products, setProducts] = useState<Product[]>([]);
+  const dispatch = useDispatch();
+  const products = useSelector(selectAllProducts);
+  const postStatus = useSelector((state) => state.product.status);
 
   useEffect(() => {
     let ignore = false;
 
-    getProducts().then((dataProducts) => {
+    if (postStatus === "idle") {
       if (!ignore) {
-        setProducts(dataProducts);
+        dispatch(fetchProducts());
       }
-    });
+    }
 
     return () => {
       ignore = true;
     };
-  }, []);
+  }, [postStatus, dispatch]);
 
   return (
     <TableContainer component={Paper}>
