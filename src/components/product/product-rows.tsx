@@ -7,15 +7,17 @@ import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
 import { CustomModal } from "@/components/common";
-import { Product } from "@/models";
+import { Product, IdProductForm } from "@/models";
 import { ProductForm } from "@/components/product";
 
 export function ProductRows({ products }: { products: Product[] }) {
   const [open, setOpen] = useState(false);
+  const [productId, setProductId] = useState<IdProductForm>(undefined);
   const handleClose = () => {
     setOpen(false);
   };
   const handleProductEdition = (id: string) => {
+    setProductId(id);
     setOpen(true);
   };
 
@@ -60,7 +62,7 @@ export function ProductRows({ products }: { products: Product[] }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <ProductForm onSuccessful={handleClose} />
+        <ProductForm productId={productId} onSuccessful={handleClose} />
       </CustomModal>
     </>
   );

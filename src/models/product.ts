@@ -14,7 +14,11 @@ export interface Product {
 
 export type IdProduct = Product["_id"];
 
+export type IdProductForm = Product["_id"] | undefined;
+
 export type InsertProduct = Omit<Product, "_id">;
+
+export type UpdateProduct = Required<Product>;
 
 export enum ErrorProductProp {
   name = "name",
@@ -89,7 +93,6 @@ export interface ProductSliceState {
   status: string;
   creationStatus: string;
   error?: string;
-  editableProduct?: Product;
 }
 
 export enum ProductStatus {
@@ -103,4 +106,5 @@ export interface ProductFields {
   error: boolean | undefined;
   helperText: ReactNode;
   type: "number" | "text";
+  value?: unknown
 }

@@ -1,7 +1,7 @@
 import type { ReduxState } from "@/lib/redux";
-import { IdProduct } from "@/models/product";
+import { IdProductForm } from "@/models/product";
 
 export const selectAllProducts = (state: ReduxState) => state.product.products;
 
-export const selectProductById = (state: ReduxState, productId: IdProduct) =>
+export const selectProductById = (state: ReduxState, productId: IdProductForm) =>
   state.product.products.find((product) => product._id === productId);

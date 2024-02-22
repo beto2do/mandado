@@ -10,6 +10,7 @@ import {
   ProductPayload,
   ErrorProductProp,
   ProductFields,
+  IdProductForm,
 } from "@/models";
 import { FormEvent, ChangeEvent, useState, useEffect } from "react";
 import {
@@ -17,10 +18,11 @@ import {
   useSelector,
   useDispatch,
   selectSnackbar,
+  selectProductById,
   createProduct,
 } from "@/lib/redux";
 
-export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
+export function ProductForm({ productId, onSuccessful }: {productId?: IdProductForm, onSuccessful: any }) {
   const defaultError = { error: false, msg: "" };
   const nameMessage = "Product Name is required";
   const categoryMessage = "Category is required";
@@ -45,6 +47,7 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
   const snackbar: SnackbarModel = useSelector(selectSnackbar);
   const dispatch = useDispatch();
   const creationStatus = useSelector((state) => state.product.creationStatus);
+  const updateProduct = useSelector((state) => selectProductById(state,productId));
 
   useEffect(() => {
     let ignore = false;
@@ -128,6 +131,7 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
       label: "name",
       error: nameError.error,
       helperText: nameError.msg,
+      value: updateProduct?.name,
       type: "text",
     },
     {
@@ -135,6 +139,7 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
       label: "category",
       error: categoryError.error,
       helperText: categoryError.msg,
+      value: updateProduct?.category,
       type: "text",
     },
     {
@@ -142,6 +147,7 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
       label: "calories",
       error: caloriesError.error,
       helperText: caloriesError.msg,
+      value: updateProduct?.calories,
       type: "number",
     },
     {
@@ -149,6 +155,7 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
       label: "fat",
       error: fatError.error,
       helperText: fatError.msg,
+      value: updateProduct?.fat,
       type: "number",
     },
     {
@@ -156,6 +163,7 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
       label: "carbs",
       error: carbsError.error,
       helperText: carbsError.msg,
+      value: updateProduct?.carbs,
       type: "number",
     },
     {
@@ -163,6 +171,7 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
       label: "protein",
       error: proteinError.error,
       helperText: proteinError.msg,
+      value: updateProduct?.protein,
       type: "number",
     },
   ];
@@ -178,6 +187,7 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
       variant="outlined"
       fullWidth
       type={productField.type}
+      value={productField.value}
       autoComplete="off"
       onChange={handleChange}
     />
@@ -189,7 +199,7 @@ export function ProductForm({ onSuccessful }: { onSuccessful: any }) {
       <div>
         <FormControlLabel
           name="isOutOfStock"
-          control={<Switch defaultChecked onChange={handleChange} />}
+          control={<Switch defaultChecked={updateProduct?.isOutOfStock} onChange={handleChange} />}
           label="Out of Stock"
         />
       </div>
