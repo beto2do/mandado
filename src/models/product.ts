@@ -46,6 +46,20 @@ export class ProductPayload implements Required<Product> {
 
   errors: ErrorProductProp[] = [];
 
+  constructor(product?: Product) {
+    if(product) {
+      this.name = product.name;
+      this.status = product.status;
+      this.isGrabbed = product.isGrabbed;
+      this.category = product.category;
+      this.calories = product.calories ?? 0;
+      this.fat = product.fat ?? 0;
+      this.carbs = product.carbs ?? 0;
+      this.protein = product.protein ?? 0;
+      this.isOutOfStock = product.isOutOfStock;
+    }
+  }
+
   validate() {
     if (!this.name) {
       this.errors.push(ErrorProductProp.name);

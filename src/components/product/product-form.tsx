@@ -4,6 +4,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
+import SaveIcon from "@mui/icons-material/Save";
 import {
   FormControlError,
   SnackbarModel,
@@ -31,10 +32,11 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
   const fatMessage = "Fat field is required";
   const carbsMessage = "Carbs field is required";
   const proteinMessage = "Protein field is required";
-  let formTitle = "Add New Product";
-  let submitButtonLabel = "Create";
+  let formTitle = productId ? "Update Product" : "Add New Product";
+  let submitButtonLabel = productId ? "Save" : "Create";
+  const updateProduct = useSelector((state) => selectProductById(state,productId));
   const [productProperties, setProductProperties] = useState<ProductPayload>(
-    new ProductPayload(),
+    new ProductPayload(updateProduct),
   );
   const [nameError, setNameError] = useState<FormControlError>(defaultError);
   const [categoryError, setCategoryError] =
@@ -48,7 +50,6 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
   const snackbar: SnackbarModel = useSelector(selectSnackbar);
   const dispatch = useDispatch();
   const creationStatus = useSelector((state) => state.product.creationStatus);
-  const updateProduct = useSelector((state) => selectProductById(state,productId));
 
   useEffect(() => {
     let ignore = false;
@@ -59,6 +60,17 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
           globalSnackbarSlice.actions.showSnackBar({
             ...snackbar,
             message: "A product has been created",
+            open: true,
+          }),
+        );
+        onSuccessful();
+      }
+    } else if(creationStatus === "updated") {
+      if (!ignore) {
+        dispatch(
+          globalSnackbarSlice.actions.showSnackBar({
+            ...snackbar,
+            message: "A product has been updated",
             open: true,
           }),
         );
@@ -216,7 +228,8 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
           variant="contained"
           className="pointer-events-auto text-white hover:bg-red-400 hover:border-0 border-0"
         >
-          <AddIcon className="text-white" /> {submitButtonLabel}
+          {productId ? <SaveIcon className="text-white"/> : <AddIcon className="text-white" />}
+          {submitButtonLabel}
         </Button>
       </div>
     </form>
