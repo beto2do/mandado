@@ -21,7 +21,7 @@ export async function createNewProduct(product: InsertProduct) {
 
 export async function updateProduct(product: UpdateProduct) {
   const response = await fetch(urlProduct, {
-    method: "POST",
+    method: "PUT",
     mode: "cors",
     cache: "no-cache",
     credentials: "same-origin",

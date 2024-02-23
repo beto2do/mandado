@@ -20,6 +20,7 @@ import {
   selectSnackbar,
   selectProductById,
   createProduct,
+  saveProduct,
 } from "@/lib/redux";
 
 export function ProductForm({ productId, onSuccessful }: {productId?: IdProductForm, onSuccessful: any }) {
@@ -73,7 +74,11 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (validateProperties()) {
-      dispatch(createProduct(productProperties.getInsertProduct()));
+      if(!productId){
+        dispatch(createProduct(productProperties.getInsertProduct()));
+      } else {
+        dispatch(saveProduct(productProperties.getUpdateProduct(productId)));
+      }
     }
   }
 
@@ -121,6 +126,7 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
       validate: properties.validate,
       errors: properties.errors,
       getInsertProduct: properties.getInsertProduct,
+      getUpdateProduct: properties.getUpdateProduct,
       [name]: value,
     }));
   };
@@ -131,7 +137,7 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
       label: "name",
       error: nameError.error,
       helperText: nameError.msg,
-      value: updateProduct?.name,
+      value: productProperties?.name||updateProduct?.name,
       type: "text",
     },
     {
@@ -139,7 +145,7 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
       label: "category",
       error: categoryError.error,
       helperText: categoryError.msg,
-      value: updateProduct?.category,
+      value: productProperties?.category||updateProduct?.category,
       type: "text",
     },
     {
@@ -147,7 +153,7 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
       label: "calories",
       error: caloriesError.error,
       helperText: caloriesError.msg,
-      value: updateProduct?.calories,
+      value: productProperties?.calories||updateProduct?.calories,
       type: "number",
     },
     {
@@ -155,7 +161,7 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
       label: "fat",
       error: fatError.error,
       helperText: fatError.msg,
-      value: updateProduct?.fat,
+      value: productProperties?.fat||updateProduct?.fat,
       type: "number",
     },
     {
@@ -163,7 +169,7 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
       label: "carbs",
       error: carbsError.error,
       helperText: carbsError.msg,
-      value: updateProduct?.carbs,
+      value: productProperties?.carbs||updateProduct?.carbs,
       type: "number",
     },
     {
@@ -171,7 +177,7 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
       label: "protein",
       error: proteinError.error,
       helperText: proteinError.msg,
-      value: updateProduct?.protein,
+      value: productProperties?.protein||updateProduct?.protein,
       type: "number",
     },
   ];
@@ -199,7 +205,7 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
       <div>
         <FormControlLabel
           name="isOutOfStock"
-          control={<Switch defaultChecked={updateProduct?.isOutOfStock} onChange={handleChange} />}
+          control={<Switch defaultChecked={productProperties?.isOutOfStock||updateProduct?.isOutOfStock} onChange={handleChange} />}
           label="Out of Stock"
         />
       </div>

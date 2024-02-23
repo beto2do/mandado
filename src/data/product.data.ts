@@ -1,7 +1,7 @@
 import "server-only";
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 import clientPromise from "@/lib/mongodb/mongodb";
-import { Product, UpdateProduct } from "@/models/product";
+import { UpdateProduct, DocumentProduct } from "@/models/product";
 
 let client: MongoClient;
 
@@ -16,15 +16,16 @@ export async function findProducts() {
   return productGroup;
 }
 
-export async function createProduct(product: Product) {
+export async function createProduct(product: DocumentProduct) {
   const productsCollection = await getProductsCollection();
   productsCollection.insertOne(product);
 }
 
 export async function updateProduct(product: UpdateProduct) {
   const productsCollection = await getProductsCollection();
-  productsCollection.updateOne(
-    {_id: product._id},
+  await productsCollection.updateOne(
+    
+    {_id: new ObjectId(product._id)},
     {
       $set: {
         name: product.name,
@@ -45,5 +46,5 @@ export async function updateProduct(product: UpdateProduct) {
 async function getProductsCollection() {
   client = await clientPromise;
   const db = client.db("mandado");
-  return db.collection<Product>("products");
+  return db.collection<DocumentProduct>("products");
 }

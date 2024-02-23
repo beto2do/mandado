@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { ObjectId } from "mongodb";
 export interface Product {
   _id: string;
   name: string;
@@ -11,6 +12,8 @@ export interface Product {
   protein?: number;
   isOutOfStock: boolean;
 }
+
+export type DocumentProduct = Omit<Product, "_id"> & {_id:ObjectId};
 
 export type IdProduct = Product["_id"];
 
@@ -70,6 +73,21 @@ export class ProductPayload implements Required<Product> {
     return { totalErrors: this.errors.length, errors: this.errors };
   }
 
+  getUpdateProduct(id: string): UpdateProduct {
+    return {
+      _id: id,
+      name: this.name,
+      status: this.status,
+      isGrabbed: this.isGrabbed,
+      category: this.category,
+      calories: this.calories,
+      fat: this.fat,
+      carbs: this.carbs,
+      protein: this.protein,
+      isOutOfStock: this.isOutOfStock,
+    };
+  }
+
   getInsertProduct(): InsertProduct {
     return {
       name: this.name,
@@ -82,7 +100,7 @@ export class ProductPayload implements Required<Product> {
       protein: this.protein,
       isOutOfStock: this.isOutOfStock,
     };
-  }
+  }  
 }
 export interface ShoppingSliceState {
   products: Product[];
