@@ -39,9 +39,9 @@ export function ProductRows({ products }: { products: Product[] }) {
           <TableCell align="right">{row.protein}</TableCell>
           <TableCell align="right">
             {row.isOutOfStock ? (
-              <InventorySharpIcon className="text-green-600" />
-            ) : (
               <PendingActionsIcon className="text-gray-500" />
+              ) : (
+              <InventorySharpIcon className="text-green-600" />
             )}
           </TableCell>
           <TableCell align="right">
