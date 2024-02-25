@@ -1,6 +1,4 @@
 import "server-only";
-import clientPromise from "@/lib/mongodb/mongodb";
-import { ObjectId } from "mongodb";
 import {
   PantryTable,
   TableRows,
@@ -17,22 +15,6 @@ function createHeader(category: string): TableHeaders[] {
       label: category,
       align: undefined,
     },
-    {
-      label: "Calories",
-      align: "right",
-    },
-    {
-      label: "Fat",
-      align: "right",
-    },
-    {
-      label: "Carbs",
-      align: "right",
-    },
-    {
-      label: "Protein",
-      align: "right",
-    },
   ];
 }
 
@@ -46,16 +28,6 @@ function createDessertRows(products: Product[]): TableRows[] {
         "row",
         getOutofStockLabel(p.isOutOfStock),
       ),
-      createTableCell(
-        `${p.calories}`,
-        "right",
-        undefined,
-        undefined,
-        undefined,
-      ),
-      createTableCell(`${p.fat}`, "right", undefined, undefined, undefined),
-      createTableCell(`${p.carbs}`, "right", undefined, undefined, undefined),
-      createTableCell(`${p.protein}`, "right", undefined, undefined, undefined),
     ]);
   });
   return productsAdapter;
