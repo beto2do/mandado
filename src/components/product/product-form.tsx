@@ -22,6 +22,7 @@ import {
   selectProductById,
   createProduct,
   saveProduct,
+  productSlice,
 } from "@/lib/redux";
 
 export function ProductForm({ productId, onSuccessful }: {productId?: IdProductForm, onSuccessful: any }) {
@@ -80,6 +81,7 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
 
     return () => {
       ignore = true;
+      dispatch(productSlice.actions.resetCreationStatus());
     };
   }, [creationStatus, dispatch]);
 

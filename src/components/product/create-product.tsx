@@ -4,16 +4,13 @@ import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import { CustomModal } from "@/components/common";
 import { ProductForm } from "@/components/product";
-import { productSlice, useDispatch } from "@/lib/redux";
 
 export function CreateProduct() {
-  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
-    dispatch(productSlice.actions.resetCreationStatus());
     setOpen(false);
   };
 

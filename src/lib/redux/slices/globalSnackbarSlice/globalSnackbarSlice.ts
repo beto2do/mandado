@@ -4,7 +4,9 @@ import { SnackbarModel, SnackbarState, SnackbarClass } from "@/models";
 const defaultSnackbar: SnackbarModel = new SnackbarClass(false, 6000, "");
 
 const initialState: SnackbarState = {
-  snackbar: defaultSnackbar,
+  open: defaultSnackbar.open,
+  autoHideDuration: defaultSnackbar.autoHideDuration,
+  message: defaultSnackbar.message,
 };
 
 export const globalSnackbarSlice = createSlice({
@@ -12,10 +14,14 @@ export const globalSnackbarSlice = createSlice({
   initialState,
   reducers: {
     showSnackBar: (state, action: PayloadAction<SnackbarModel>) => {
-      state.snackbar = action.payload;
+      state.open = action.payload.open;
+      state.autoHideDuration = action.payload.autoHideDuration;
+      state.message = action.payload.message;
     },
     reset: (state) => {
-      state.snackbar = defaultSnackbar;
+        state.open = defaultSnackbar.open;
+        state.autoHideDuration = defaultSnackbar.autoHideDuration;
+        state.message = defaultSnackbar.message;
     },
   },
 });
