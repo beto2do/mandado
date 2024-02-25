@@ -1,5 +1,5 @@
-import { PantryView } from '@/components/pantry';
+import { PantryView } from "@/components/pantry";
 
 export default function Pantry() {
-    return <PantryView></PantryView>;
+  return <PantryView></PantryView>;
 }

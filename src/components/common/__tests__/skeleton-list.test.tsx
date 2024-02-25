@@ -1,9 +1,7 @@
-import renderer from 'react-test-renderer';
-import { SkeletonList } from '@/components/common'
+import renderer from "react-test-renderer";
+import { SkeletonList } from "@/components/common";
 
-it('renders correctly', () => {
-    const tree = renderer
-      .create(<SkeletonList/>)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
+it("renders correctly", () => {
+  const tree = renderer.create(<SkeletonList />).toJSON();
+  expect(tree).toMatchSnapshot();
+});

@@ -1,9 +1,9 @@
-import { CreateProduct } from '@/components/product'
+import { CreateProduct } from "@/components/product";
 
 export function ProductBar() {
-    return (
+  return (
     <div>
-        <CreateProduct/>
+      <CreateProduct />
     </div>
-    )
+  );
 }

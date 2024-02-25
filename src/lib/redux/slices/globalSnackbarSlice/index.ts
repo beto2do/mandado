@@ -1,2 +1,2 @@
-export * from './globalSnackbarSlice'
-export * from './selectors'
+export * from "./globalSnackbarSlice";
+export * from "./selectors";
