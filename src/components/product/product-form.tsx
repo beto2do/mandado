@@ -25,7 +25,13 @@ import {
   productSlice,
 } from "@/lib/redux";
 
-export function ProductForm({ productId, onSuccessful }: {productId?: IdProductForm, onSuccessful: any }) {
+export function ProductForm({
+  productId,
+  onSuccessful,
+}: {
+  productId?: IdProductForm;
+  onSuccessful: any;
+}) {
   const defaultError = { error: false, msg: "" };
   const nameMessage = "Product Name is required";
   const categoryMessage = "Category is required";
@@ -35,7 +41,9 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
   const proteinMessage = "Protein field is required";
   let formTitle = productId ? "Update Product" : "Add New Product";
   let submitButtonLabel = productId ? "Save" : "Create";
-  const updateProduct = useSelector((state) => selectProductById(state,productId));
+  const updateProduct = useSelector((state) =>
+    selectProductById(state, productId),
+  );
   const [productProperties, setProductProperties] = useState<ProductPayload>(
     new ProductPayload(updateProduct),
   );
@@ -66,7 +74,7 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
         );
         onSuccessful();
       }
-    } else if(creationStatus === "updated") {
+    } else if (creationStatus === "updated") {
       if (!ignore) {
         dispatch(
           globalSnackbarSlice.actions.showSnackBar({
@@ -88,7 +96,7 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (validateProperties()) {
-      if(!productId){
+      if (!productId) {
         dispatch(createProduct(productProperties.getInsertProduct()));
       } else {
         dispatch(saveProduct(productProperties.getUpdateProduct(productId)));
@@ -151,7 +159,7 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
       label: "name",
       error: nameError.error,
       helperText: nameError.msg,
-      value: productProperties?.name||updateProduct?.name,
+      value: productProperties?.name || updateProduct?.name,
       type: "text",
     },
     {
@@ -159,7 +167,7 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
       label: "category",
       error: categoryError.error,
       helperText: categoryError.msg,
-      value: productProperties?.category||updateProduct?.category,
+      value: productProperties?.category || updateProduct?.category,
       type: "text",
     },
     {
@@ -167,7 +175,7 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
       label: "calories",
       error: caloriesError.error,
       helperText: caloriesError.msg,
-      value: productProperties?.calories||updateProduct?.calories,
+      value: productProperties?.calories || updateProduct?.calories,
       type: "number",
     },
     {
@@ -175,7 +183,7 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
       label: "fat",
       error: fatError.error,
       helperText: fatError.msg,
-      value: productProperties?.fat||updateProduct?.fat,
+      value: productProperties?.fat || updateProduct?.fat,
       type: "number",
     },
     {
@@ -183,7 +191,7 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
       label: "carbs",
       error: carbsError.error,
       helperText: carbsError.msg,
-      value: productProperties?.carbs||updateProduct?.carbs,
+      value: productProperties?.carbs || updateProduct?.carbs,
       type: "number",
     },
     {
@@ -191,7 +199,7 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
       label: "protein",
       error: proteinError.error,
       helperText: proteinError.msg,
-      value: productProperties?.protein||updateProduct?.protein,
+      value: productProperties?.protein || updateProduct?.protein,
       type: "number",
     },
   ];
@@ -219,7 +227,14 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
       <div>
         <FormControlLabel
           name="isOutOfStock"
-          control={<Switch defaultChecked={productProperties?.isOutOfStock||updateProduct?.isOutOfStock} onChange={handleChange} />}
+          control={
+            <Switch
+              defaultChecked={
+                productProperties?.isOutOfStock || updateProduct?.isOutOfStock
+              }
+              onChange={handleChange}
+            />
+          }
           label="Out of Stock"
         />
       </div>
@@ -230,7 +245,11 @@ export function ProductForm({ productId, onSuccessful }: {productId?: IdProductF
           variant="contained"
           className="pointer-events-auto text-white hover:bg-red-400 hover:border-0 border-0"
         >
-          {productId ? <SaveIcon className="text-white"/> : <AddIcon className="text-white" />}
+          {productId ? (
+            <SaveIcon className="text-white" />
+          ) : (
+            <AddIcon className="text-white" />
+          )}
           {submitButtonLabel}
         </Button>
       </div>

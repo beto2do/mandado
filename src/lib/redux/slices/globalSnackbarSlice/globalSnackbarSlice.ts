@@ -19,9 +19,9 @@ export const globalSnackbarSlice = createSlice({
       state.message = action.payload.message;
     },
     reset: (state) => {
-        state.open = defaultSnackbar.open;
-        state.autoHideDuration = defaultSnackbar.autoHideDuration;
-        state.message = defaultSnackbar.message;
+      state.open = defaultSnackbar.open;
+      state.autoHideDuration = defaultSnackbar.autoHideDuration;
+      state.message = defaultSnackbar.message;
     },
   },
 });

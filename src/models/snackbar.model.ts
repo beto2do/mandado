@@ -15,4 +15,3 @@ export class SnackbarClass implements SnackbarModel {
 }
 
 export interface SnackbarState extends SnackbarModel {}
-

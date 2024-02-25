@@ -1,4 +1,8 @@
-import { findProducts, createProduct, updateProduct } from "@/data/product.data";
+import {
+  findProducts,
+  createProduct,
+  updateProduct,
+} from "@/data/product.data";
 
 export async function GET() {
   const data = await findProducts();

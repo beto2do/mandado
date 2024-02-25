@@ -24,8 +24,7 @@ export async function createProduct(product: DocumentProduct) {
 export async function updateProduct(product: UpdateProduct) {
   const productsCollection = await getProductsCollection();
   await productsCollection.updateOne(
-    
-    {_id: new ObjectId(product._id)},
+    { _id: new ObjectId(product._id) },
     {
       $set: {
         name: product.name,
@@ -39,8 +38,8 @@ export async function updateProduct(product: UpdateProduct) {
         isOutOfStock: product.isOutOfStock,
       },
     },
-    { upsert: false }
-    );
+    { upsert: false },
+  );
 }
 
 async function getProductsCollection() {

@@ -13,7 +13,7 @@ export interface Product {
   isOutOfStock: boolean;
 }
 
-export type DocumentProduct = Omit<Product, "_id"> & {_id:ObjectId};
+export type DocumentProduct = Omit<Product, "_id"> & { _id: ObjectId };
 
 export type IdProduct = Product["_id"];
 
@@ -47,7 +47,7 @@ export class ProductPayload implements Required<Product> {
   errors: ErrorProductProp[] = [];
 
   constructor(product?: Product) {
-    if(product) {
+    if (product) {
       this.name = product.name;
       this.status = product.status;
       this.isGrabbed = product.isGrabbed;
@@ -114,7 +114,7 @@ export class ProductPayload implements Required<Product> {
       protein: this.protein,
       isOutOfStock: this.isOutOfStock,
     };
-  }  
+  }
 }
 export interface ShoppingSliceState {
   products: Product[];
@@ -138,5 +138,5 @@ export interface ProductFields {
   error: boolean | undefined;
   helperText: ReactNode;
   type: "number" | "text";
-  value?: unknown
+  value?: unknown;
 }

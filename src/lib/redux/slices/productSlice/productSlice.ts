@@ -66,8 +66,10 @@ export const productSlice = createSlice({
       })
       .addCase(saveProduct.fulfilled, (state, action) => {
         state.creationStatus = "updated";
-        let index = state.products.findIndex(product => product._id === action.payload._id);
-        if(index !== -1) {
+        let index = state.products.findIndex(
+          (product) => product._id === action.payload._id,
+        );
+        if (index !== -1) {
           state.products[index] = action.payload;
         }
       });
