@@ -10,8 +10,7 @@ export function PantryTables() {
   useEffect(() => {
     let ignore = false;
 
-    getPantryTable()
-    .then((pantriesData) => {
+    getPantryTable().then((pantriesData) => {
       if (!ignore) {
         setPantries(pantriesData);
       }

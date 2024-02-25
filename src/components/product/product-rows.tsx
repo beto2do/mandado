@@ -40,7 +40,7 @@ export function ProductRows({ products }: { products: Product[] }) {
           <TableCell align="right">
             {row.isOutOfStock ? (
               <PendingActionsIcon className="text-gray-500" />
-              ) : (
+            ) : (
               <InventorySharpIcon className="text-green-600" />
             )}
           </TableCell>

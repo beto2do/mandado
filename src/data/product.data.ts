@@ -49,19 +49,18 @@ async function getProductsCollection() {
   return db.collection<DocumentProduct>("products");
 }
 
-
 export async function getGroupCatProducts() {
   const productsCollection = await getProductsCollection();
   const categoryGroup = await productsCollection.aggregate([
     {
-      $sort: { Category: 1}
+      $sort: { Category: 1 },
     },
     {
       $group: {
         _id: "$category",
         products: { $push: "$$ROOT" },
-      }
-    }
+      },
+    },
   ]);
 
   return categoryGroup;
