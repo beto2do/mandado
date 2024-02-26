@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { TableView } from "@/components/common";
 import { PantryTable } from "@/models";
+import { getPantryTable } from "@/services";
 
 export function PantryTables() {
   const [pantries, setPantries] = useState<PantryTable[]>([]);
@@ -9,13 +10,11 @@ export function PantryTables() {
   useEffect(() => {
     let ignore = false;
 
-    fetch("/api/pantry")
-      .then((response) => response.json())
-      .then((pantriesData) => {
-        if (!ignore) {
-          setPantries(pantriesData);
-        }
-      });
+    getPantryTable().then((pantriesData) => {
+      if (!ignore) {
+        setPantries(pantriesData);
+      }
+    });
     return () => {
       ignore = true;
     };

@@ -2,6 +2,7 @@ import "server-only";
 import { MongoClient, ObjectId } from "mongodb";
 import clientPromise from "@/lib/mongodb/mongodb";
 import { UpdateProduct, DocumentProduct } from "@/models/product";
+import { Category } from "@mui/icons-material";
 
 let client: MongoClient;
 
@@ -46,4 +47,21 @@ async function getProductsCollection() {
   client = await clientPromise;
   const db = client.db("mandado");
   return db.collection<DocumentProduct>("products");
+}
+
+export async function getGroupCatProducts() {
+  const productsCollection = await getProductsCollection();
+  const categoryGroup = await productsCollection.aggregate([
+    {
+      $sort: { Category: 1 },
+    },
+    {
+      $group: {
+        _id: "$category",
+        products: { $push: "$$ROOT" },
+      },
+    },
+  ]);
+
+  return categoryGroup;
 }

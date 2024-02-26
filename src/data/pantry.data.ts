@@ -1,6 +1,4 @@
 import "server-only";
-import clientPromise from "@/lib/mongodb/mongodb";
-import { ObjectId } from "mongodb";
 import {
   PantryTable,
   TableRows,
@@ -9,28 +7,13 @@ import {
   Product,
 } from "@/models";
 import { TableCellBaseProps } from "@mui/material/TableCell";
+import { getGroupCatProducts } from "@/data/product.data";
 
 function createHeader(category: string): TableHeaders[] {
   return [
     {
       label: category,
       align: undefined,
-    },
-    {
-      label: "Calories",
-      align: "right",
-    },
-    {
-      label: "Fat",
-      align: "right",
-    },
-    {
-      label: "Carbs",
-      align: "right",
-    },
-    {
-      label: "Protein",
-      align: "right",
     },
   ];
 }
@@ -45,16 +28,6 @@ function createDessertRows(products: Product[]): TableRows[] {
         "row",
         getOutofStockLabel(p.isOutOfStock),
       ),
-      createTableCell(
-        `${p.calories}`,
-        "right",
-        undefined,
-        undefined,
-        undefined,
-      ),
-      createTableCell(`${p.fat}`, "right", undefined, undefined, undefined),
-      createTableCell(`${p.carbs}`, "right", undefined, undefined, undefined),
-      createTableCell(`${p.protein}`, "right", undefined, undefined, undefined),
     ]);
   });
   return productsAdapter;
@@ -86,30 +59,7 @@ function getOutofStockLabel(isOutOfStock: boolean): string {
 
 export async function findPantries(): Promise<PantryTable[]> {
   const pantryGroup = [];
-  const client = await clientPromise;
-  const db = client.db("mandado");
-  const pantriesCollection = db.collection("pantries");
-  const pantries = pantriesCollection.aggregate([
-    {
-      $match: { userId: new ObjectId("659792589aceaac3f8b4d745") }, //TODO it should be the user in session
-    },
-    {
-      $lookup: {
-        from: "products",
-        localField: "products",
-        foreignField: "_id",
-        as: "pantries_products",
-      },
-    },
-    { $unwind: "$pantries_products" },
-    { $replaceRoot: { newRoot: "$pantries_products" } },
-    {
-      $group: {
-        _id: "$category",
-        products: { $push: "$$ROOT" },
-      },
-    },
-  ]);
+  const pantries = await getGroupCatProducts();
 
   for await (const p of pantries) {
     pantryGroup.push({
