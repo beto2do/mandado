@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-import TableRow from "@mui/material/TableRow";
-import TableCell from "@mui/material/TableCell";
+import { TableRow, TableCell } from "@mui/material";
 import InventorySharpIcon from "@mui/icons-material/InventorySharp";
 import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import EditIcon from "@mui/icons-material/Edit";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import IconButton from "@mui/material/IconButton";
 import { CustomModal } from "@/components/common";
 import { Product, IdProductForm } from "@/models";
@@ -20,6 +20,9 @@ export function ProductRows({ products }: { products: Product[] }) {
     setProductId(id);
     setOpen(true);
   };
+  const handleProductDelete = (id: string) => {
+    alert('delete =>'+id)
+  }
 
   return (
     <>
@@ -52,6 +55,16 @@ export function ProductRows({ products }: { products: Product[] }) {
               }}
             >
               <EditIcon className="text-red-500" />
+            </IconButton>
+          </TableCell>
+          <TableCell align="right">
+            <IconButton
+              aria-label="Delete"
+              onClick={() => {
+                handleProductDelete(row._id);
+              }}
+            >
+              <DeleteForeverIcon className="text-red-500" />
             </IconButton>
           </TableCell>
         </TableRow>

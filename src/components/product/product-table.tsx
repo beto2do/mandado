@@ -9,12 +9,13 @@ import {
   Paper,
 } from "@mui/material";
 import { ProductRows } from "@/components/product";
+import { ProductTableHeader } from "@/models";
 import { useEffect } from "react";
 import { useSelector } from "@/lib/redux";
 import { selectAllProducts, fetchProducts, useDispatch } from "@/lib/redux";
 import { SkeletonList } from "@/components/common";
 
-export function ProductTable() {
+export function ProductTable({headerData}:{headerData:ProductTableHeader[]}) {
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts);
   const productStatus = useSelector((state) => state.product.status);
@@ -34,43 +35,7 @@ export function ProductTable() {
   }, [productStatus, dispatch]);
 
   let content;
-  const headerData: {
-    label: string;
-    align: "right" | "center" | "left" | "inherit" | "justify" | undefined;
-  }[] = [
-    {
-      label: "Name",
-      align: undefined,
-    },
-    {
-      label: "Category",
-      align: "right",
-    },
-    {
-      label: "Calories",
-      align: "right",
-    },
-    {
-      label: "Fat(g)",
-      align: "right",
-    },
-    {
-      label: "Carbs(g)",
-      align: "right",
-    },
-    {
-      label: "Protein(g)",
-      align: "right",
-    },
-    {
-      label: "Out of Stock",
-      align: "right",
-    },
-    {
-      label: "Edition",
-      align: "right",
-    },
-  ];
+
   const productTable = (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
