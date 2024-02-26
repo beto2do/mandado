@@ -15,7 +15,11 @@ import { useSelector } from "@/lib/redux";
 import { selectAllProducts, fetchProducts, useDispatch } from "@/lib/redux";
 import { SkeletonList } from "@/components/common";
 
-export function ProductTable({headerData}:{headerData:ProductTableHeader[]}) {
+export function ProductTable({
+  headerData,
+}: {
+  headerData: ProductTableHeader[];
+}) {
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts);
   const productStatus = useSelector((state) => state.product.status);

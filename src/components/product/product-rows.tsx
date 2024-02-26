@@ -21,8 +21,8 @@ export function ProductRows({ products }: { products: Product[] }) {
     setOpen(true);
   };
   const handleProductDelete = (id: string) => {
-    alert('delete =>'+id)
-  }
+    alert("delete =>" + id);
+  };
 
   return (
     <>

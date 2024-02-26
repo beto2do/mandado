@@ -2,7 +2,6 @@ import { ProductTable, ProductBar } from "@/components/product";
 import { ProductTableHeader } from "@/models";
 
 export function ProductView() {
-
   const headerData: ProductTableHeader[] = [
     {
       label: "Name",

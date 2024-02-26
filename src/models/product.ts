@@ -141,7 +141,6 @@ export interface ProductFields {
   value?: unknown;
 }
 
-
 export interface ProductTableHeader {
   label: string;
   align: "right" | "center" | "left" | "inherit" | "justify" | undefined;

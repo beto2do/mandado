@@ -27,3 +27,13 @@ export interface MenuLink {
   label: string;
   path: string;
 }
+
+export interface ConfirmationDialogProps {
+  open: boolean;
+  dialogTitle: string;
+  dialogDesc: string;
+  disagreeLabel: string;
+  agreeLabel: string;
+  handleAgree: () => void;
+  handleDisagree: () => void;
+}
