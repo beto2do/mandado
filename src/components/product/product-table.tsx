@@ -1,11 +1,13 @@
 "use client";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@mui/material";
 import { ProductRows } from "@/components/product";
 import { useEffect } from "react";
 import { useSelector } from "@/lib/redux";
@@ -32,33 +34,53 @@ export function ProductTable() {
   }, [productStatus, dispatch]);
 
   let content;
+  const headerData: {
+    label: string;
+    align: "right" | "center" | "left" | "inherit" | "justify" | undefined;
+  }[] = [
+    {
+      label: "Name",
+      align: undefined,
+    },
+    {
+      label: "Category",
+      align: "right",
+    },
+    {
+      label: "Calories",
+      align: "right",
+    },
+    {
+      label: "Fat(g)",
+      align: "right",
+    },
+    {
+      label: "Carbs(g)",
+      align: "right",
+    },
+    {
+      label: "Protein(g)",
+      align: "right",
+    },
+    {
+      label: "Out of Stock",
+      align: "right",
+    },
+    {
+      label: "Edition",
+      align: "right",
+    },
+  ];
   const productTable = (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead className="bg-slate-600">
           <TableRow>
-            <TableCell className="text-white">Name</TableCell>
-            <TableCell className="text-white" align="right">
-              Category
-            </TableCell>
-            <TableCell className="text-white" align="right">
-              Calories
-            </TableCell>
-            <TableCell className="text-white" align="right">
-              Fat&nbsp;(g)
-            </TableCell>
-            <TableCell className="text-white" align="right">
-              Carbs&nbsp;(g)
-            </TableCell>
-            <TableCell className="text-white" align="right">
-              Protein&nbsp;(g)
-            </TableCell>
-            <TableCell className="text-white" align="right">
-              Out of Stock
-            </TableCell>
-            <TableCell className="text-white" align="right">
-              Edition
-            </TableCell>
+            {headerData.map((header) => (
+              <TableCell className="text-white" align={header.align}>
+                {header.label}
+              </TableCell>
+            ))}
           </TableRow>
         </TableHead>
         <TableBody>
