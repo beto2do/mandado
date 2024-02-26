@@ -6,12 +6,13 @@ import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import IconButton from "@mui/material/IconButton";
-import { CustomModal } from "@/components/common";
+import { CustomModal, ConfirmationDialog } from "@/components/common";
 import { Product, IdProductForm } from "@/models";
 import { ProductForm } from "@/components/product";
 
 export function ProductRows({ products }: { products: Product[] }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
+  const [dialogOpen, setDialogOpen] = useState<boolean>(false);
   const [productId, setProductId] = useState<IdProductForm>(undefined);
   const handleClose = () => {
     setOpen(false);
@@ -20,8 +21,17 @@ export function ProductRows({ products }: { products: Product[] }) {
     setProductId(id);
     setOpen(true);
   };
-  const handleProductDelete = (id: string) => {
-    alert("delete =>" + id);
+  const handleDeleteEvent = (id: string) => {
+    setProductId(id);
+    setDialogOpen(true);
+  };
+  const handleDeletePermanently = () => {
+    alert("TODO delete " + productId);
+    setDialogOpen(false);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
   };
 
   return (
@@ -61,7 +71,7 @@ export function ProductRows({ products }: { products: Product[] }) {
             <IconButton
               aria-label="Delete"
               onClick={() => {
-                handleProductDelete(row._id);
+                handleDeleteEvent(row._id);
               }}
             >
               <DeleteForeverIcon className="text-red-500" />
@@ -77,6 +87,15 @@ export function ProductRows({ products }: { products: Product[] }) {
       >
         <ProductForm productId={productId} onSuccessful={handleClose} />
       </CustomModal>
+      <ConfirmationDialog
+        open={dialogOpen}
+        dialogTitle="Are you sure to delete the product?"
+        dialogDesc="The product will be deleted permanently"
+        agreeLabel="Ok"
+        disagreeLabel="Close"
+        handleAgree={handleDeletePermanently}
+        handleDisagree={handleCloseDialog}
+      />
     </>
   );
 }

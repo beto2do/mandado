@@ -9,7 +9,7 @@ import {
 import { ConfirmationDialogProps } from "@/models";
 import { useId } from "react";
 
-export default function ConfirmationDialog({
+export function ConfirmationDialog({
   open,
   dialogTitle,
   dialogDesc,
